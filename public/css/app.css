@@ -1,0 +1,103 @@
+/* Hintergrundfarbe für den gesamten Body */
+*{
+    line-height: 1.2;
+}
+
+body {
+
+    background-color: #f5f0e1; /* Leichtes Braun */
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Standard-Schriftart */
+    color: #333;
+
+}
+
+/* Navigation: Verbesserung */
+nav {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Schatten für die Navigation */
+    border-bottom: 2px solid #aa3c3c; /* Farbliche Abgrenzung */
+}
+nav a {
+    border-radius: 4px; /* Leicht abgerundete Ecken für Links */
+    margin-right: 5px; /* Abstand zwischen Links */
+    transition: background 0.3s, color 0.3s; /* Sanfter Übergang bei Hover */
+}
+
+/* Container: Optimierung */
+.defaultContainer {
+    border-radius: 8px; /* Abgerundete Ecken */
+    line-height: 1.8; /* Verbesserte Lesbarkeit */
+    padding: 30px; /* Mehr Innenabstand */
+}
+
+.defaultContainer h1 {
+    font-size: 28px; /* Größere Überschrift */
+    color: #aa3c3c; /* Farb-Akzent */
+}
+
+.defaultContainer:hover {
+    transform: translateY(-5px); /* Leichtes Schweben beim Hover */
+}
+
+/* Main und Footer: Anpassungen */
+main {
+    background: #ffffff; /* Weißer Hintergrund für Kontrast */
+    padding: 20px;
+    border-radius: 8px; /* Abgerundete Kanten */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten für Tiefe */
+}
+
+footer {
+    border-radius: 8px;
+    text-align: center; /* Zentrierter Text */
+    background: linear-gradient(135deg, #ffffff, #f5f0e1); /* Leichtes Farbspiel */
+}
+
+footer a {
+    text-decoration: none; /* Kein Unterstrich */
+    font-weight: bold; /* Fetter Text */
+    margin: 10px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #aa3c3c; /* Hover-Farbe für Links */
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    nav a {
+        font-size: 15px;
+        padding: 10px 12px;
+    }
+
+    .defaultContainer {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    footer {
+        width: 90%;
+    }
+
+    .imgHeader{
+        width: 100%;
+        height: auto;
+
+
+    }
+
+
+    .zitate {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Zentriert den Text horizontal */
+        text-align: center; /* Zentriert den Text innerhalb des Containers */
+    }
+
+    .zitate hr{
+        width: 90%;
+    }
+
+}
