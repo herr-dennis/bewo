@@ -1,22 +1,6 @@
 @extends("defaultLayout")
 
-
-@section("header")
-    <nav>
-        <a>Home</a>
-        <a>Kontakt</a>
-        <a>Was ist Bewo?</a>
-
-    </nav>
-@endsection
-
 @section("main-content")
-
-
-    <div>
-        <img class="imgHeader" src={{asset("sozial.jpg")}} alt="Logo">
-    </div>
-
 
     <div class="zitate" >
 

@@ -1,33 +1,126 @@
 /* Hintergrundfarbe für den gesamten Body */
 *{
     line-height: 1.2;
+    font-family: 'Playfair Display', serif;
+}
+
+p {
+    font-weight: 100; /* Sehr dünn */
+}
+
+h1 {
+    font-weight: 300; /* Dünner und eleganter als normal */
+}
+
+strong {
+    font-weight: 400; /* Normalgewicht (Standard) */
+}
+
+b {
+    font-weight: 700; /* Fett */
 }
 
 body {
+    background:  linear-gradient(to top, #ffffff, #cdbfbf);
+        height: 100%;
+        margin: 0;
 
-    background-color: #f5f0e1; /* Leichtes Braun */
-    margin: 0;
-    font-family: 'Arial', sans-serif; /* Standard-Schriftart */
-    color: #333;
+    }
 
-}
-
-/* Navigation: Verbesserung */
 nav {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Schatten für die Navigation */
-    border-bottom: 2px solid #aa3c3c; /* Farbliche Abgrenzung */
+      float: right;
+      text-align: center; /* Zentriert den Inhalt der <ul> */
+      margin-bottom: 15px;
 }
-nav a {
-    border-radius: 4px; /* Leicht abgerundete Ecken für Links */
-    margin-right: 5px; /* Abstand zwischen Links */
-    transition: background 0.3s, color 0.3s; /* Sanfter Übergang bei Hover */
+nav a{
+    text-decoration: none;
+    color:black;
+    border-radius: 5px;
+    border: solid black 1px;
+    background:  linear-gradient(to bottom, #ffffff, #cdbfbf);
+    font-size: 15px;
+    padding: 5px 5px;
+    margin-top: 8px; /* Fügt Abstand nach oben hinzu */
+    display: inline-block; /* Verhindert, dass sich die <a>-Elemente überlappen */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichte Tiefe */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* Auto-Margin zentriert die <ul> horizontal */
+    display: inline-block; /* Damit das <ul> nur so breit wie sein Inhalt ist */
+    height: 15px;
+}
+
+nav ul li {
+    display: inline; /* Damit die <li>-Elemente nebeneinander angezeigt werden */
+    margin: 0;
+}
+/* Dropdown-Button (angepasst an Nav-Menü) */
+.dropbtn {
+    background:  linear-gradient(to bottom, #ffffff, #cdbfbf);
+    font-size: 15px;
+    padding: 5px 5px;
+    border: solid black 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Gleichmäßige Ausrichtung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichte Tiefe */
+}
+
+/* Button Hover-Effekt */
+.dropbtn:hover {
+    background:  linear-gradient(to bottom, #ffffff, #cdbfbf);
+}
+
+/* Container für Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+}
+
+/* Dropdown-Inhalt */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 100px;
+    z-index: 1000;
+
+}
+
+/* Links im Dropdown */
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin: 0;
+}
+
+/* Hover-Effekt für Dropdown-Links */
+.dropdown-content a:hover {
+    background-color: #c12e2e;
+}
+
+/* Dropdown sichtbar bei Hover */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* Container: Optimierung */
 .defaultContainer {
     border-radius: 8px; /* Abgerundete Ecken */
     line-height: 1.8; /* Verbesserte Lesbarkeit */
-    padding: 30px; /* Mehr Innenabstand */
+    background-color: rgba(205, 133, 63, 0.1);
+        padding: 20px;
+        margin: 10px;
+
 }
 
 .defaultContainer h1 {
@@ -39,65 +132,170 @@ nav a {
     transform: translateY(-5px); /* Leichtes Schweben beim Hover */
 }
 
+header{
+    display: flex;              /* Flexbox aktivieren */
+    flex-direction: column;     /* Container untereinander anordnen */
+    align-items: center;        /* Zentrieren der Container horizontal */
+    justify-content: center;    /* Zentrieren der Container vertikal (optional) */
+
+}
+
+
 /* Main und Footer: Anpassungen */
 main {
-    background: #ffffff; /* Weißer Hintergrund für Kontrast */
     padding: 20px;
     border-radius: 8px; /* Abgerundete Kanten */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten für Tiefe */
+    display: flex;              /* Flexbox aktivieren */
+    flex-direction: column;     /* Container untereinander anordnen */
+    align-items: center;        /* Zentrieren der Container horizontal */
+    justify-content: center;    /* Zentrieren der Container vertikal (optional) */
+
 }
+
 
 footer {
     border-radius: 8px;
     text-align: center; /* Zentrierter Text */
-    background: linear-gradient(135deg, #ffffff, #f5f0e1); /* Leichtes Farbspiel */
+
 }
 
 footer a {
     text-decoration: none; /* Kein Unterstrich */
     font-weight: bold; /* Fetter Text */
-    margin: 10px;
+    margin: 15px;
     transition: color 0.3s ease;
+    color: #5c2d91; /* Hintergrundfarbe (lila) */
 }
 
 footer a:hover {
-    color: #aa3c3c; /* Hover-Farbe für Links */
+    color: #f5b23d; /* Hover-Farbe für Links */
+    width: 90%;
 }
 
+.zitate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Zentriert den Text horizontal */
+    text-align: center; /* Zentriert den Text innerhalb des Containers */
+}
+.zitate hr{
+    width: 90%;
+}
+
+.imgHeader {
+    width: 70%;                /* Logo nimmt 70% der Container-Breite ein */
+    height: auto;              /* Höhe wird automatisch skaliert */
+    object-fit: cover;         /* Sorgt dafür, dass das Bild den Container vollständig füllt */
+    border-radius: 50%;        /* Rundes Bild */
+    display: block;            /* Entfernt mögliche zusätzliche Abstände von Inline-Elementen */
+    margin: 0 auto;            /* Zentriert das Bild innerhalb des Containers */
+}
+
+.imageContainer {
+    overflow: hidden;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: center;        /* Zentriert den Inhalt des Containers */
+}
+
+
 /* Responsive Anpassungen */
-@media (max-width: 768px) {
-    nav a {
-        font-size: 15px;
-        padding: 10px 12px;
+@media (min-width: 768px) {
+    .imageContainer {
+        width: 200px;
+        height: 200px;
     }
 
-    .defaultContainer {
-        padding: 20px;
-        margin: 10px;
+    .defaultContainer{
+        width: 69%;
     }
 
-    footer {
-        width: 90%;
+    .defaultUl {
+        width: 69%;
+    }
+    
+    main{
+        margin-top: auto;
+        /* Volle Höhe des Viewports */
     }
 
-    .imgHeader{
-        width: 100%;
-        height: auto;
+}
 
-
+@media (min-width: 1950px) {
+    main{
+        min-height: 100vh;          /* Volle Höhe des Viewports */
     }
+}
+/* Container-Styling */
+.infoBar {
+    display: flex;
+    justify-content: space-between; /* Elemente gleichmäßig verteilen */
+    align-items: center;
+    background-color: #5c2d91; /* Hintergrundfarbe (lila) */
+    padding: 10px 20px; /* Abstand innen */
+    color: white; /* Schriftfarbe */
+    height: 10px;
+    width: 90%;
+}
+
+/* Einzelne Info-Elemente */
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Abstand zwischen Icon und Text */
+    border-left: 1px solid white; /* Trennlinie */
+    padding-left: 15px; /* Abstand nach links */
+}
+
+/* Erstes Element ohne Linie */
+.infoItem:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+/* Symbole */
+.infoItem i {
+    font-size: 1.2rem; /* Größe der Icons */
+    color: white;
+}
+
+/* Text */
+.infoItem span {
+    font-size: 0.8rem; /* Schriftgröße */
+    font-weight: normal;
+}
+
+i:hover{
+    color: #f5b23d; /* Hover-Farbe für Links */
+}
+
+.defaultUl{
+    justify-content: center;
+    border-radius: 8px; /* Abgerundete Ecken */
+    line-height: 1.8; /* Verbesserte Lesbarkeit */
+    background-color: rgba(205, 133, 63, 0.1);
+    padding: 20px;
+    margin: 10px;
+}
+.defaultUl li::marker{
+    color: #5c2d91;
+
+}
+.defaultUl li{
+    list-style-type: square;
+}
 
 
-    .zitate {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center; /* Zentriert den Text horizontal */
-        text-align: center; /* Zentriert den Text innerhalb des Containers */
-    }
-
-    .zitate hr{
-        width: 90%;
-    }
-
+hr {
+    border: none; /* Entfernt die Standardlinie */
+    height: 4px; /* Höhe der Linie */
+    background-color: rgba(205, 133, 63, 0.3);
+    margin: 20px 0; /* Abstand oberhalb und unterhalb der Linie */
+    border-radius: 2px; /* Abgerundete Kanten */
+    width: 60%;
+}
+hr.shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Schatten für mehr Tiefe */
 }
