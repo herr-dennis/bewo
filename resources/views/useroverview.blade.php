@@ -31,10 +31,12 @@
 
 
 
-     <form class="formContainer">
+     <form class="formContainer" action="{{route("Delete")}}" method="post" >
+         @csrf
          <p>Geben Sie zum Löschen die ID ein:</p>
          <input type="text" name="id"  placeholder="ID eingeben" required >
          <input type="submit" value="Löschen">
+         <input type="hidden" id="formDelete" name="formDelete" value="delete" >
      </form>
 
 

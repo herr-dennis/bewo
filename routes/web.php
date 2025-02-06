@@ -68,3 +68,6 @@ Route::post('insertVerwaltung', function (Request $request) {
 Route::get('Übersicht', function () {
     return app()->make('\App\Http\Controllers\MainController')->getÜbersicht();
 });
+Route::post('Delete', function (Request $request) {
+    return app()->make('\App\Http\Controllers\MainController')->deleteUser($request);
+})->name("Delete");

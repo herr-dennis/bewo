@@ -250,7 +250,7 @@ footer a:hover {
         display: block;            /* Entfernt mögliche zusätzliche Abstände von Inline-Elementen */
         margin: 0 auto;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7),
-        -5px -5px 15px rgba(255, 255, 255, 0.2);iert das Bild innerhalb des Containers
+        -5px -5px 15px rgba(255, 255, 255, 0.2);
     }
 
     .imageContainerSozio {
@@ -258,9 +258,7 @@ footer a:hover {
 
     }
 
-
 }
-
 
 /* Responsive Anpassungen */
 @media (min-width: 768px) {

@@ -86,13 +86,23 @@ class MainController extends BaseController
     {
 
 
-        //HIER PRÜFEN DES PW UND BENUTZER
-        //WANN DANN return  view ();
+        if(Session::has('admin')){
+            if(Session::get("admin")===true){
+                return redirect("Verwaltung");
+            }
+        }
         return view('loginView');
     }
 
     public function verifizierung(Request $request)
     {
+
+        if(Session::has('admin')){
+            if(Session::get("admin")===true){
+                return redirect("Verwaltung");
+            }
+        }
+
         // Überprüfung, ob die Felder vorhanden sind
         if ($request->has('name') && $request->has('password')) {
             $name_input = $request->input('name');
@@ -106,7 +116,7 @@ class MainController extends BaseController
 
                 // Login erfolgreich
                 if ($password_input === $admin->pw) {
-                    Session::flash('admin', 'true');
+                    Session::put('admin', true);
                     return redirect("Verwaltung");
                 }
             }
@@ -215,5 +225,32 @@ class MainController extends BaseController
         }
       //  return redirect()->to(route('Verwaltung') . '#form2');
     }
+
+    public function deleteUser(Request $request)
+    {
+        $id = $request->input('id');
+
+        if ($request->input("formDelete") === "delete") {
+            try {
+                $deletedRows = Mitarbeiter::query()->where('id', $id)->delete();
+
+                if ($deletedRows) {
+                    Session::flash("msg", "Mitarbeiter erfolgreich gelöscht.");
+                } else {
+                    Session::flash("error", "Kein Mitarbeiter mit der angegebenen ID gefunden.");
+                }
+            } catch (Exception $exception) {
+                Session::flash("error", "Fehler beim Löschen: " . $exception->getMessage());
+            }
+        } else {
+            Session::flash("error", "Ungültiger Löschvorgang.");
+        }
+
+        return redirect()->back();
+    }
+
+
+
+
 }
 
