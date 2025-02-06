@@ -4,7 +4,7 @@
 
 @section("main-content")
 
-    <p>Hilfe</p>
+    <h1>Hilfe für junge Erwachsene</h1>
     <div class="defaultContainer" >
         <p>Lorem ipsum dolor sit amet, consectetuer
             adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,

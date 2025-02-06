@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titel')</title>
     <link href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}" rel="stylesheet">
-    <link rel="icon" href="{{ asset('FaviconLogo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('FaviconLogoSozio.jpg') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 <body>
 <header>
     @section("header")
-
 
         <div class="infoBar">
             <div class="infoItem">
@@ -35,13 +34,6 @@
                 <span>Kontakt</span>
             </div>
         </div>
-
-
-    <script>
-
-
-    </script>
-
 
         <nav>
             <ul>
@@ -65,13 +57,13 @@
             </ul>
         </nav>
 
-        <div class="imageContainer">
-            <img src="{{asset('MediumSquareLogo.jpg')}}" class="imgHeader"   alt="Logo">
+        <div class="imageContainerSozio">
+            <img src="{{asset('soziologo.jpg')}}" class="imgHeaderSozio"   alt="Logo">
         </div>
 
         <script>
             // Logo-Element abrufen
-            let logos = document.querySelectorAll('.imgHeader');
+            let logos = document.querySelectorAll('.imgHeaderSozio');
             logos.forEach(function (logo) {
                 logo.addEventListener('click', function () {
                     window.location.href = '/';
@@ -83,7 +75,7 @@
     @show
 </header>
 <main>
-@section("main-content")
+    @section("main-content")
     @show
 </main>
 
@@ -124,3 +116,4 @@
 </footer>
 </body>
 </html>
+

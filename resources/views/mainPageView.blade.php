@@ -3,15 +3,12 @@
 @section("main-content")
 
     <div class="zitate" >
-
         <h2>Teilhabe am Leben</h2>
         <p>
             Die Hilfe wird so individuell gestaltet, wie das Leben unserer Kunden ist!
         </p>
         <hr>
     </div>
-
-
     <div class="defaultContainer">
         <p>Mit unseren Angeboten bieten wir Menschen mit einer <span class="highlight">Teilhabeeinschränkung</span> Unterstützung, um sie möglichst zu einer „<span class="highlight">unabhängigen Lebensführung und Eingliederung in die Gemeinschaft</span>“ zu befähigen (Artikel 19 der UN-Behindertenrechtskonvention).</p>
 

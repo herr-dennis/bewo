@@ -4,7 +4,7 @@
 
 @section("main-content")
 
-    <p>Termine</p>
+  <h1>Aktuelles</h1>
     <div class="defaultContainer" >
         <p>Lorem ipsum dolor sit amet, consectetuer
             adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
@@ -17,4 +17,28 @@
             ar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros
             faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
     </div>
+
+
+
+
+  @foreach( $data as $value => $item)
+
+      <div class="aktuellesContainer">
+          <p class="date">{{$item["datum"]}}</p>
+          <h2>{{$item["veranstaltung"]}}</h2>
+          @if($item["bildUrl"])
+              <img src="{{$item["bildUrl"]}}" alt="Aktuelles Bild von Noah">
+          @endif
+          @if(!$item["bildUrl"])
+              <img src="{{asset('soziologo.jpg')}}" alt="Aktuelles Bild von Noah">
+          @endif
+          <p>{!! nl2br(($item["text"])) !!}</p>
+      </div>
+
+  @endforeach
+
+
+
+
+
 @endsection

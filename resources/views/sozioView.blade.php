@@ -1,11 +1,10 @@
-@extends('defaultLayout')
+@extends('sozioLayout')
 
 
 
 @section("main-content")
 
-
-    <h2>Soziotherapie</h2>
+    <h1>Soziotherapie</h1>
     <hr>
     <div class="defaultContainer" >
         <p>Soziotherapie ist die Unterstützung für Menschen mit einer psychischen Erkrankung nach
