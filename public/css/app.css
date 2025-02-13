@@ -134,6 +134,7 @@ nav ul li {
     background-color: rgba(205, 133, 63, 0.1);
         padding: 20px;
         margin: 10px;
+    text-align: center;
 
 }
 
@@ -476,11 +477,26 @@ hr.shadow {
     border-radius: 12px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
+    margin-top: 25px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.checkbox-container span {
+    text-align: center;
 }
 
 
@@ -617,3 +633,22 @@ input[type="submit"]:hover {
     margin: 10px auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+#überschriftForm{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.headline {
+    position: relative;
+    display: inline-block;
+}
+
+.headline::after {
+    content: "";
+    display: block;
+    width: 40vw; /* 70% der gesamten Bildschirmbreite */
+    height: 1px;
+    background-color: #5c2d91;
+    margin: 4px auto 0;
+}
+

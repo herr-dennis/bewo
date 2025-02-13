@@ -75,7 +75,14 @@
 
             <label id="textLabel">Text:</label>
             <textarea name="text" placeholder="Beschreibung hinzufügen"></textarea>
+            <label id="checkLabel" class="checkbox-container">
+                <input type="checkbox" name="sendEmail" value="akzeptiert" >
+                <span> Email senden an alle Newsletter-Abonnenten.</span>
+            </label>
+
             <input type="submit" value="Einpflegen">
+
+
         </form>
     </div>
     @if(\Illuminate\Support\Facades\Session::has('error_2'))
@@ -84,6 +91,14 @@
     @if(\Illuminate\Support\Facades\Session::has("msg_2"))
         <label class="erfolgreichMsg" >{{\Illuminate\Support\Facades\Session::get("msg_2")}}</label>
     @endif
+    @if(\Illuminate\Support\Facades\Session::has('error_email'))
+        <label class="errorMsg" >{{\Illuminate\Support\Facades\Session::get("error_email")}}</label>
+    @endif
+    @if(\Illuminate\Support\Facades\Session::has("msg_email"))
+        <label class="erfolgreichMsg" >{{\Illuminate\Support\Facades\Session::get("msg_email")}}</label>
+    @endif
+
+
     <button class="buttonLogin"  onclick="actionAdminsVerwalten()" >Admins verwalten</button>
 
     <script>

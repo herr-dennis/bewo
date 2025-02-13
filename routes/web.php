@@ -21,7 +21,7 @@ Route::get('Termine', function () {
 
 Route::get('Kontakt', function () {
     return app()->make('\App\Http\Controllers\MainController')->getKontakt();
-});
+})->name('Kontakt');
 
 Route::get('BetreutesWohnen', function () {
     return app()->make('\App\Http\Controllers\MainController')->getBetreutes();
@@ -67,7 +67,16 @@ Route::post('insertVerwaltung', function (Request $request) {
 
 Route::get('Übersicht', function () {
     return app()->make('\App\Http\Controllers\MainController')->getÜbersicht();
-});
+})->name("Übersicht");
+
 Route::post('Delete', function (Request $request) {
     return app()->make('\App\Http\Controllers\MainController')->deleteUser($request);
 })->name("Delete");
+
+Route::post('insertNewsletter', function (Request $request) {
+    return app()->make('\App\Http\Controllers\MainController')->insertNewsletter($request);
+})->name("insertNewsletter");
+
+Route::post('sendKontakt', function (Request $request) {
+    return app()->make('\App\Http\Controllers\MainController')->sendKontakt($request);
+})->name("sendKontakt");

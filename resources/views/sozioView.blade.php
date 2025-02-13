@@ -4,7 +4,7 @@
 
 @section("main-content")
 
-    <h1>Soziotherapie</h1>
+    <h1 class="headline" >Soziotherapie</h1>
     <hr>
     <div class="defaultContainer" >
         <p>Soziotherapie ist die Unterstützung für Menschen mit einer psychischen Erkrankung nach

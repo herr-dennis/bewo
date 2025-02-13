@@ -38,7 +38,7 @@
         <nav>
             <ul>
                 <li><a href="/BetreutesWohnen">Betreutes Wohnen</a></li>
-                <li><a href="/HilfeJungeErwachsene">Hilfe für junge Erwachsene</a></li>
+                <li><a href="/HilfeJungeErwachsene">Weitere Leistungen</a></li>
                 <li><a href="/Soziotherapie">Soziotherapie</a></li>
                 <li >
                     <!-- Dropdown-Menü -->
@@ -82,7 +82,7 @@
 <footer>
 
     <div class="container" id="mitglieder">
-        <h2>Wir sind <span style="color: #FFD700;">Mitglied</span> in folgenden Verbänden</h2>
+        <h2>Wir sind <span style="color: #5c2d91;">Mitglied</span> in folgenden Verbänden</h2>
         <div class="logos">
             <div class="logo-item">
                 <a href="https://www.igbewo-aachen.de/"target="_blank" >

@@ -5,7 +5,7 @@
 @section("main-content")
 
 
-<h1>Mitarbeiter Login</h1>
+<h1 class="headline" >Mitarbeiter Login</h1>
 
 
 
