@@ -6,6 +6,7 @@
 
 p {
     font-weight: 100; /* Sehr dünn */
+
 }
 
 strong {
@@ -237,7 +238,6 @@ footer a:hover {
 
     .imageContainer {
         overflow: hidden;
-
         margin-right: 20px;
         margin-left: 20px;
         text-align: center;        /* Zentriert den Inhalt des Containers */
@@ -256,9 +256,7 @@ footer a:hover {
 
     .imageContainerSozio {
         margin-top: 20px;
-
     }
-
 }
 
 /* Responsive Anpassungen */
@@ -274,11 +272,40 @@ footer a:hover {
         border-radius: 20px;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7),
         -5px -5px 15px rgba(255, 255, 255, 0.2);
+
     }
 
     .imageContainer img{
-        width: 400px;
+        width: 200px;
         border-radius: 20px;
+    }
+
+
+    /* Glanz-Animation */
+    .imgHeader::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+        border-radius: 20px;
+        transition: all 0.3s;
+        animation: shine 3s infinite;
+        pointer-events: none;
+    }
+
+    @keyframes shine {
+        0% {
+            left: -100%;
+        }
+        50% {
+            left: 100%;
+        }
+        100% {
+            left: 100%;
+        }
     }
 
 
@@ -304,10 +331,15 @@ footer a:hover {
         flex-direction: column;     /* Container untereinander anordnen */
         align-items: center;        /* Zentrieren der Container horizontal */
         justify-content: center;    /* Zentrieren der Container vertikal (optional) */
+
+    }
+
+    header{
+        width: 100%;
     }
 
     main{
-        width: 50%;
+        width: 70%;
     }
     .aktuellesContainer {
         flex-shrink: 0; /* Verhindert das Strecken */
@@ -316,7 +348,6 @@ footer a:hover {
         box-sizing: border-box; /* Box-Modell korrekt einstellen */
 
     }
-
 
 }
 
@@ -382,6 +413,15 @@ i:hover{
 }
 .defaultUl li{
     list-style-type: square;
+}
+.defaultUl h3{
+    font-weight: bold;
+}
+.p_schrift{
+    color: #5c2d91;
+    font-weight: bold;
+
+
 }
 
 
@@ -625,7 +665,7 @@ input[type="submit"]:hover {
 }
 
 .date {
-    font-size: 14px;
+    font-size: 18px;
     background-color: white;
     padding: 5px 10px;
     border-radius: 20px;

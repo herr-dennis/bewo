@@ -5,14 +5,16 @@
 @section("main-content")
 
     <h1 class="headline" >Soziotherapie</h1>
-    <hr>
+
     <div class="defaultContainer" >
+
         <p>Soziotherapie ist die Unterstützung für Menschen mit einer psychischen Erkrankung nach
             § 37a SGB V. Sie ist eine ambulant therapeutische Behandlungs- und Hilfeform, die in Einzel- und Gruppengesprächen stattfindet.</p>
     </div>
 
     <hr>
     <div class="defaultUl" >
+        <p class="p_schrift">Soziotherapie bei psychischen Belastungen</p>
         <p>Soziotherapie eignet sich für Menschen, die durch ihre psychische Erkrankung besonders belastet sind,
             zum Beispiel durch krankheitsbedingte Beeinträchtigungen:</p>
 
@@ -27,7 +29,7 @@
 <hr>
     <div class="defaultUl">
 
-        <h2>Fachärzte aus den Bereichen:</h2>
+        <p class="p_schrift">Fachärzte aus den Bereichen:</p>
 
         <ul>
             <li>Psychiatrie</li>

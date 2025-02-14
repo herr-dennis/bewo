@@ -7,6 +7,7 @@ use App\Models\Mitarbeiter;
 use App\Models\Newsletter;
 use App\Models\SendingEmails;
 use App\Models\Termine;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Mail;
@@ -57,10 +58,28 @@ class MainController extends BaseController
 
     public function getTermine()
     {
+        try {
+            // Termine aus der Datenbank holen und direkt sortieren
+            $termine = Termine::query()->orderBy('datum')->get();
 
-        $termine = Termine::query()->select('*')->get()->sortByDesc('datum');
+            // Aktuelles Datum als Carbon-Instanz holen
+            $currentDate = Carbon::now('Europe/Berlin');
 
+            foreach ($termine as $termineDatum) {
+                // Datum des Termins als Carbon-Objekt parsen
+                $termin = Carbon::parse($termineDatum->datum);
 
+                // Falls der Termin in der Vergangenheit liegt, löschen
+                if ($termin->lt($currentDate)) {
+                    Termine::query()->where('datum', $termineDatum->datum)->delete();
+                }
+            }
+
+        } catch (Exception $e) {
+            Session::flash("error", $e->getMessage());
+        }
+
+        // View mit den Terminen zurückgeben
         return view('termineView', ['data' => $termine]);
     }
 
