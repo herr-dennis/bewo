@@ -39,6 +39,10 @@
         </div>
 
 
+       @if(\Illuminate\Support\Facades\Session::has("error_db"))
+           <label>{{\Illuminate\Support\Facades\Session::get("error_db")}}</label>
+       @endif
+
     <script>
 
 
@@ -85,7 +89,7 @@
     @show
 </header>
 <main>
-    <div style="position: fixed; bottom: 0; left: 0;">
+    <div style="position: fixed; bottom: 0; left: 0; margin: 3px ">
         <button class="buttonLogin" onclick="scrollToLogo()">
             <i class="fas fa-arrow-up"></i>
         </button>

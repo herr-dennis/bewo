@@ -14,7 +14,7 @@
               <img src="{{$item["bildUrl"]}}" alt="Aktuelles Bild von Noah">
           @endif
           @if(!$item["bildUrl"])
-              <img src="{{asset('soziologo.jpg')}}" alt="Aktuelles Bild von Noah">
+              <img src="{{asset('MediumSquareLogo.jpg')}}" alt="Aktuelles Bild von Noah">
           @endif
           <p>{!! nl2br(($item["text"])) !!}</p>
       </div>

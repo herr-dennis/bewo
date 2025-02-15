@@ -9,7 +9,7 @@
 
 
     <div>
-        <label>Aufrufe:</label>
+        <label>Aufrufe: @foreach($data as $item => $value) {{$value["aufrufe"]}} @endforeach </label>
 
     </div>
 

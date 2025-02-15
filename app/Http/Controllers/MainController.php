@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admins;
+use App\Models\Dates;
+use App\Models\InkrementAufrufe;
 use App\Models\Mitarbeiter;
 use App\Models\Newsletter;
 use App\Models\SendingEmails;
@@ -20,6 +22,7 @@ class MainController extends BaseController
 {
     public function getHome()
     {
+        $inkrem = new InkrementAufrufe();
         return view('mainPageView');
     }
 
@@ -50,9 +53,12 @@ class MainController extends BaseController
 
     public function getTeam()
     {
-
-        $mitarbeiter = mitarbeiter::query()->select('*')->get();
-
+        try{
+            $mitarbeiter = mitarbeiter::query()->select('*')->get();
+        }
+        catch(\Exception $e){
+            Session::flash("error_db", $e->getMessage());
+        }
         return view('teamView', ['data' => $mitarbeiter]);
     }
 
@@ -157,12 +163,19 @@ class MainController extends BaseController
 
     public function getVerwaltung()
     {
+        $aufrufe= null;
+        try{
+            $aufrufe = Dates::query()->select("aufrufe")->get();
+        }catch(\Exception $e){
+            Session::flash("error_db", $e->getMessage());
+        }
+
 
         if(!Session::has('admin')===true){
             return redirect("Admin");
         }
 
-        return view("verwaltungView");
+        return view("verwaltungView" , ['data' => $aufrufe] );
     }
 
 
