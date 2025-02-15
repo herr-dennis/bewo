@@ -15,7 +15,7 @@
         <p>Wir arbeiten derzeit an der Fertigstellung unserer Website, um Ihnen bald alle Informationen bereitzustellen. Schauen Sie bald wieder vorbei!</p>
         <p>Bei Fragen oder Anfragen können Sie uns jederzeit über unsere <a href="/Kontakt">Kontaktseite</a> erreichen.</p>
     </div>
-    <h1 class="headline">Physische Beratung</h1>
+    <h1 class="headline">Psychologische Beratung</h1>
     <div class="defaultContainer">
         <p>Wir arbeiten derzeit an der Fertigstellung unserer Website, um Ihnen bald alle Informationen bereitzustellen. Schauen Sie bald wieder vorbei!</p>
         <p>Bei Fragen oder Anfragen können Sie uns jederzeit über unsere <a href="/Kontakt">Kontaktseite</a> erreichen.</p>
@@ -30,7 +30,7 @@
         <p>Wir arbeiten derzeit an der Fertigstellung unserer Website, um Ihnen bald alle Informationen bereitzustellen. Schauen Sie bald wieder vorbei!</p>
         <p>Bei Fragen oder Anfragen können Sie uns jederzeit über unsere <a href="/Kontakt">Kontaktseite</a> erreichen.</p>
     </div>
-    <h1 class="headline">Erziehung Beratung</h1>
+    <h1 class="headline">Erziehungsberatung</h1>
     <div class="defaultContainer">
         <p>Wir arbeiten derzeit an der Fertigstellung unserer Website, um Ihnen bald alle Informationen bereitzustellen. Schauen Sie bald wieder vorbei!</p>
         <p>Bei Fragen oder Anfragen können Sie uns jederzeit über unsere <a href="/Kontakt">Kontaktseite</a> erreichen.</p>

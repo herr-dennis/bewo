@@ -157,16 +157,34 @@ class MainController extends BaseController
 
     public function getVerwaltung()
     {
+
+        if(!Session::has('admin')===true){
+            return redirect("Admin");
+        }
+
         return view("verwaltungView");
     }
 
 
     public function getÜbersicht()
     {
-        $data = Mitarbeiter::query()->select('*')->get();
-        $email = Newsletter::query()->select('*')->get();
+        if(!Session::has('admin')){
+            return redirect("Admin");
+        }
 
-        return view("useroverview", ['data' => $data] , ['data_2' => $email]);
+        try{
+            $termine = Termine::query()->select('*')->get();
+            $data = Mitarbeiter::query()->select('*')->get();
+            $email = Newsletter::query()->select('*')->get();
+        }catch (\Exception $e){
+            Session::flash("error", $e->getMessage());
+        }
+
+        return view("useroverview", [
+            'data' => $data,
+            'data_2' => $email,
+            'data_3' => $termine
+        ]);
     }
 
     /**
@@ -176,6 +194,11 @@ class MainController extends BaseController
      */
     public function insertVerwaltung(Request $request)
     {
+
+        if(!Session::has('admin')===true){
+            return redirect("Admin");
+        }
+
         if ($request->input("form_name") === "form1") {
 
             if ($request->has("name") && $request->has("position")) {
@@ -264,24 +287,59 @@ class MainController extends BaseController
      */
     public function deleteUser(Request $request)
     {
-        $id = $request->input('id');
 
-        if ($request->input("formDelete") === "delete") {
+        if(!Session::has('admin')===true){
+            return redirect("Admin");
+        }
+
+
+        if ($request->input("form1")==1) {
+            $id = $request->input('id');
             try {
                 $deletedRows = Mitarbeiter::query()->where('id', $id)->delete();
                 if ($deletedRows) {
-                    Session::flash("msg", "Mitarbeiter erfolgreich gelöscht.");
+                    Session::flash("msg_1", "Mitarbeiter erfolgreich gelöscht.");
                 } else {
-                    Session::flash("error", "Kein Mitarbeiter mit der angegebenen ID gefunden.");
+                    Session::flash("error_1", "Kein Mitarbeiter mit der angegebenen ID gefunden.");
                 }
             } catch (\Exception $exception) {
-                Session::flash("error", "Fehler beim Löschen: " . $exception->getMessage());
+                Session::flash("error_1", "Fehler beim Löschen: " . $exception->getMessage());
             }
-        } else {
-            Session::flash("error", "Ungültiger Löschvorgang.");
+            return redirect()->to(route('Übersicht') . '#formDelete');
         }
 
-        return redirect()->to(route('Übersicht') . '#formDelete');
+        if ($request->input("form2")==2) {
+            $name = $request->input('name');
+
+            try {
+                $deletedRows = Newsletter::query()->where('name', $name)->delete();
+                if ($deletedRows) {
+                    Session::flash("msg_2", "Abonnent erfolgreich gelöscht.");
+                } else {
+                    Session::flash("error_2", "Kein Abonnent gefunden.");
+                }
+            } catch (\Exception $exception) {
+                Session::flash("error_2", "Fehler beim Löschen: " . $exception->getMessage());
+            }
+           return redirect()->to(route('Übersicht') . '#formDelete2');
+        }
+
+        if ($request->input("form3")==3) {
+            $veranstaltung = $request->input('veranstaltung');
+
+            try {
+                $deletedRows = Termine::query()->where('veranstaltung', $veranstaltung)->delete();
+                if ($deletedRows) {
+                    Session::flash("msg_3", "Veranstaltung erfolgreich gelöscht.");
+                } else {
+                    Session::flash("error_3", "Keine Veranstaltung gefunden.");
+                }
+            } catch (\Exception $exception) {
+                Session::flash("error_3", "Fehler beim Löschen: " . $exception->getMessage());
+            }
+            return redirect()->to(route('Übersicht') . '#formDelete3');
+        }
+        return  redirect()->back();
     }
 
     /**
@@ -359,6 +417,18 @@ class MainController extends BaseController
 
         return redirect()->to(route('Kontakt') . '#formKontakt');
     }
+
+
+    public function abmelden()
+    {
+        if (!Session::has('admin')) {
+            return redirect("Admin");
+        } else {
+            Session::forget('admin');
+            return redirect('/')->with('success', 'Erfolgreich abgemeldet.');
+        }
+    }
+
 
 }
 

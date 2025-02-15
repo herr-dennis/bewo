@@ -46,14 +46,5 @@
 
 @endforeach
 
-    <button class="buttonLogin" onclick="login()">Mitarbeiter-Login</button>
-
-
-    <script>
-        function login(){
-            window.location.href="/Login";
-        }
-
-    </script>
 @endsection
 

@@ -3,7 +3,23 @@
 
 
 @section("main-content")
+    <div style="position: fixed; bottom: 0; left: 0;">
+        <button class="buttonLogin" onclick="onClickAbmelden()">Abmelden</button>
+    </div>
 
+
+    <div>
+        <label>Aufrufe:</label>
+
+    </div>
+
+
+
+    <script>
+        function onClickAbmelden(){
+            window.location.href ="/Abmelden"
+        }
+    </script>
 
     <h2>Hinweise:</h2>
     <div class="defaultContainer">

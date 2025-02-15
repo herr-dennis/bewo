@@ -48,11 +48,11 @@ Route::get('Kooperationen', function () {
     return app()->make('\App\Http\Controllers\MainController')->getKoor();
 });
 
-Route::get('Login', function () {
+Route::get('Admin', function () {
     return app()->make('\App\Http\Controllers\MainController')->getLogin();
 });
 
-Route::post('Login', function (Request $request) {
+Route::post('Admin', function (Request $request) {
     return app()->make('\App\Http\Controllers\MainController')->verifizierung($request);
 });
 
@@ -80,3 +80,7 @@ Route::post('insertNewsletter', function (Request $request) {
 Route::post('sendKontakt', function (Request $request) {
     return app()->make('\App\Http\Controllers\MainController')->sendKontakt($request);
 })->name("sendKontakt");
+
+Route::get('Abmelden', function () {
+    return app()->make('\App\Http\Controllers\MainController')->abmelden();
+});

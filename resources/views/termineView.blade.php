@@ -1,7 +1,5 @@
 @extends('defaultLayout')
 
-
-
 @section("main-content")
 
   <h1 class="headline" >Aktuelles</h1>
@@ -9,7 +7,7 @@
   @foreach( $data as $value => $item)
 
       <div class="aktuellesContainer">
-          <p class="date">{{ \Carbon\Carbon::parse($item['datum'])->format('d m y') }}</p>
+          <p class="date">{{ \Carbon\Carbon::parse($item['datum'])->format('d.m.y') }}</p>
 
           <h2>{{$item["veranstaltung"]}}</h2>
           @if($item["bildUrl"])
@@ -22,9 +20,4 @@
       </div>
 
   @endforeach
-
-
-
-
-
 @endsection
