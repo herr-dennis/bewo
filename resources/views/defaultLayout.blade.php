@@ -8,6 +8,8 @@
     <link href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}" rel="stylesheet">
     <link rel="icon" href="{{ asset('FaviconLogo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="BeWo Paiva Würselen. Ambulantes betreutes Wohnen. Unterstützung für Menschen mit einer psychischen Erkrankung. ">
+    <meta name="robots" content="index, follow"> <!-- Suchmaschinen dürfen die Seite indexieren und Links folgen -->
 
 </head>
 <body>
@@ -66,7 +68,7 @@
         </nav>
 
         <div class="imageContainer">
-            <img src="{{asset('MediumSquareLogo.jpg')}}" class="imgHeader"   alt="Logo">
+            <img src="{{asset('MediumSquareLogo.jpg')}}" class="imgHeader"  id="logo"  alt="Logo">
         </div>
 
         <script>
@@ -83,6 +85,27 @@
     @show
 </header>
 <main>
+    <div style="position: fixed; bottom: 0; left: 0;">
+        <button class="buttonLogin" onclick="scrollToLogo()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+
+    <script>
+        function scrollToLogo() {
+            const logoElement = document.getElementById("logo");
+            if (logoElement) {
+                logoElement.scrollIntoView({
+                    behavior: 'smooth', // Weiches Scrollen
+                    block: 'start'      // Beginnt am oberen Rand des Elements
+                });
+            }
+        }
+
+    </script>
+
+
 @section("main-content")
     @show
 </main>

@@ -1,6 +1,7 @@
 @extends('defaultLayout')
 
 
+@section("titel", "Bewo-Paiva Betreutes Wohnen und Bewo")
 
 @section("main-content")
 

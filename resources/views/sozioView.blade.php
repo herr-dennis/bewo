@@ -2,6 +2,7 @@
 
 
 
+@section("titel", "Bewo-Paiva Soziotherapie, Unterstützung für Menschen mit einer psychischen Erkrankung ")
 @section("main-content")
 
     <h1 class="headline" >Soziotherapie</h1>

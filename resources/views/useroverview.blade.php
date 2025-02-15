@@ -1,5 +1,6 @@
 @extends("defaultLayout")
 
+@section("titel", "Bewo-Paiva Übersicht")
 @section("main-content")
 
     <div style="position: fixed; bottom: 0; left: 0;">

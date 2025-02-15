@@ -722,3 +722,6 @@ input[type="submit"]:hover {
     margin: 4px auto 0;
 }
 
+.defaultContainer ul{
+    text-align: left;
+}
