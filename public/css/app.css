@@ -725,3 +725,11 @@ input[type="submit"]:hover {
 .defaultContainer ul{
     text-align: left;
 }
+.buttonCookie{
+    background-color: #5c2d91;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px;
+}

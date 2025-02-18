@@ -107,6 +107,65 @@
             </a>
         </p>
 
+        <h2>Cookies und Datenschutz</h2>
+
+        <p><strong>Verwendung von Cookies</strong><br>
+            Unsere Website verwendet Cookies, um die Benutzererfahrung zu verbessern und bestimmte Funktionen bereitzustellen. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden und bestimmte Informationen enthalten.</p>
+
+        <h4>Arten von Cookies, die wir verwenden:</h4>
+
+        <ul>
+            <li><strong>Technisch notwendige Cookies:</strong><br>
+                Diese Cookies sind erforderlich, um die grundlegenden Funktionen unserer Website sicherzustellen. Ohne diese Cookies können bestimmte Funktionen nicht bereitgestellt werden, wie z. B. die Verwendung von Formularen oder das Einloggen in geschützte Bereiche.<br>
+                <strong>Beispiele:</strong>
+                <ul>
+                    <li><strong>CSRF-Token:</strong> Zum Schutz vor Cross-Site-Request-Forgery-Angriffen.</li>
+                    <li><strong>Session-Cookies:</strong> Zur Speicherung Ihrer Login-Session.</li>
+                </ul>
+            </li>
+            <li><strong>Optionale Cookies (z. B. für Analyse und Marketing):</strong><br>
+                Diese Cookies helfen uns zu verstehen, wie Besucher unsere Website nutzen, und ermöglichen es uns, unser Angebot zu optimieren. Sie werden nur gesetzt, wenn Sie Ihre Zustimmung dazu gegeben haben.<br>
+                <strong>Beispiele:</strong>
+                <ul>
+                    <li><strong>Google Analytics</strong> (wenn verwendet): Zur Analyse des Nutzerverhaltens.</li>
+                    <li><strong>Marketing-Cookies</strong>: Zur Personalisierung von Werbeinhalten.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Einwilligung und Ablehnung von Cookies</h4>
+        <p>Beim ersten Besuch unserer Website wird Ihnen ein <strong>Cookie-Banner</strong> angezeigt. Sie können wählen zwischen:</p>
+        <ul>
+            <li><strong>"Alle Cookies akzeptieren"</strong> – Alle Cookies, einschließlich optionaler Analyse- und Marketing-Cookies, werden gesetzt.</li>
+            <li><strong>"Nur technisch notwendige Cookies akzeptieren"</strong> – Es werden nur Cookies gesetzt, die für die Funktion der Website erforderlich sind.</li>
+            <li><strong>"Keine Cookies"</strong> – Es werden nur minimale Cookies gesetzt, die für die Darstellung der Website erforderlich sind.</li>
+        </ul>
+
+        <p>Sie können Ihre <strong>Cookie-Einstellungen</strong> jederzeit ändern, indem Sie in Ihrem Browser die entsprechenden Einstellungen anpassen oder den Cache und Cookies löschen.</p>
+
+        <h4>Speicherdauer und Kontrolle über Cookies</h4>
+        <p><strong>Technisch notwendige Cookies</strong> bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen.<br>
+            <strong>Optionale Cookies</strong> werden nur für den jeweils angegebenen Zeitraum gespeichert oder bis Sie Ihre Zustimmung widerrufen.</p>
+
+        <p>Sie können das <strong>Speichern von Cookies</strong> durch entsprechende Einstellungen in Ihrem Browser verhindern oder bereits gespeicherte Cookies löschen.<br>
+            Beachten Sie jedoch, dass dadurch die Funktionalität der Website eingeschränkt sein kann.</p>
+
+        <h3>Weitergabe an Dritte</h3>
+        <p>Wir geben keine personenbezogenen Daten an Dritte weiter, außer in den Fällen, in denen wir gesetzlich dazu verpflichtet sind. Falls wir <strong>externe Dienste</strong> (z. B. Analyse-Tools) verwenden, werden Sie darüber im Cookie-Banner informiert und können Ihre Zustimmung gezielt erteilen.</p>
+
+        <h4>Rechtsgrundlage und Ihre Rechte</h4>
+        <p>Die Verarbeitung Ihrer Daten erfolgt auf Basis Ihrer <strong>Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO</strong>. Sie haben jederzeit das Recht:</p>
+        <ul>
+            <li><strong>Ihre Einwilligung zu widerrufen</strong></li>
+            <li><strong>Auskunft</strong> über die gespeicherten Daten zu erhalten</li>
+            <li><strong>Löschung</strong> oder <strong>Berichtigung</strong> Ihrer Daten zu verlangen</li>
+        </ul>
+
+        <h4>Kontakt</h4>
+        <p>Bei Fragen zum Thema Datenschutz oder zur Verwendung von Cookies können Sie sich an uns wenden:</p>
+        <p><strong>Bewo-Paiva</strong><br>
+            E-Mail: <a type="email" >info@bewo-paiva.de</a><br>
+           </p>
 
 
     </section>
