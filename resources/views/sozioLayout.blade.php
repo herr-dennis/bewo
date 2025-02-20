@@ -106,7 +106,7 @@
 <footer>
 
     <div class="container" id="mitglieder">
-        <h2>Wir sind <span style="color: #5c2d91;">Mitglied</span> in folgenden Verbänden</h2>
+        <h2>Wir sind <span class="labelMitglied">Mitglied</span> in folgenden Verbänden</h2>
         <div class="logos">
             <div class="logo-item">
                 <a href="https://www.igbewo-aachen.de/"target="_blank" >
@@ -128,6 +128,11 @@
                     <img src="{{asset('sozioBund.png')}}" alt="Platzhalter Logo 2">
                 </a>
 
+            </div>
+            <div class="logo-item">
+                <a href="https://www.ivpnetworks.de/" target="_blank" >
+                    <img src="{{asset('ivp.png')}}" alt="Platzhalter Logo 2">
+                </a>
             </div>
         </div>
     </div>

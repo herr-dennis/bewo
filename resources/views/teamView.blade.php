@@ -31,23 +31,20 @@
         <p>{{$item["text"]}}</p>
 
     <div class="contact-info">
-
-
            @if($item["email"])
-           <div>
-               <a href="tel:024054067133">
-                   <i class="fa fa-phone"></i> <!-- Telefon-Symbol -->
+           <div class="contact-email" >
+               <a href="{{"mailto:".$item["email"]}}">
+                   <i class="fa fa-comment-alt"></i> <!-- Telefon-Symbol -->
                </a>
-               <span>{{$item["email"]}}</span>
+               <div>{{$item["email"]}}</div>
            </div>
          @endif
                @if($item["telefon"])
-               <div>
-
-               <a href="mailto: c.paiva@bewo-walz-paiva.de">
-                   <i class="fa fa-comment"></i> <!-- Telefon-Symbol -->
+               <div class="contact-telefon" >
+               <a href="{{"tel:".$item['telefon']}}">
+                   <i class="fa fa-phone"></i> <!-- Telefon-Symbol -->
                </a>
-               <span> {{$item["telefon"]}}</span>
+               <div> {{$item["telefon"]}}</div>
            </div>
                @endif
     </div>

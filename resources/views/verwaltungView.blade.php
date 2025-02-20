@@ -3,7 +3,7 @@
 
 
 @section("main-content")
-    <div style="position: fixed; bottom: 0; left: 0;">
+    <div style="position: fixed; bottom: 0; right: 0;">
         <button class="buttonLogin" onclick="onClickAbmelden()">Abmelden</button>
     </div>
 
