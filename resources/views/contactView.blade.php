@@ -19,16 +19,6 @@
 
         <form class="formContainer" id="formKontakt" method="post" action="{{route("sendKontakt")}}" >
             @csrf
-            <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
-            <script src="https://www.google.com/recaptcha/api.js?render=DEIN_SITE_KEY"></script>
-            <script>
-                grecaptcha.ready(function() {
-                    grecaptcha.execute('6LfHtt0qAAAAAM1tZNcxgGwxICNEa7yCuUlHtgPX', {action: 'submit'}).then(function(token) {
-                        document.getElementById('recaptchaResponse').value = token;
-                    });
-                });
-            </script>
-
             <label id="überschriftForm" >Kontaktformular</label>
             <label>Ihr Name</label>
             <input type="text" name="name" placeholder="Ihr Name" required>
@@ -39,7 +29,6 @@
             </textarea>
             <input  type="submit" placeholder="Abschicken" >
             <input type="text" name="website" style="display:none;">
-
         </form>
     </div>
     @if(\Illuminate\Support\Facades\Session::has('error_kontakt'))
@@ -64,15 +53,6 @@
     <div class="formContainer">
         <form action="{{ route('insertNewsletter') }}" id="formNews" method="POST" name="form">
             @csrf
-            <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
-            <script src="https://www.google.com/recaptcha/api.js?render=DEIN_SITE_KEY"></script>
-            <script>
-                grecaptcha.ready(function() {
-                    grecaptcha.execute('6LfHtt0qAAAAAM1tZNcxgGwxICNEa7yCuUlHtgPX', {action: 'submit'}).then(function(token) {
-                        document.getElementById('recaptchaResponse').value = token;
-                    });
-                });
-            </script>
 
             <label id="nameLabel">Name</label>
             <input type="text" name="name" placeholder="Name eingeben" required>

@@ -362,14 +362,6 @@ class MainController extends BaseController
     public function insertNewsletter(Request $request)
     {
 
-
-        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfHtt0qAAAAADkqOY5Y26p58hZN2Jx6eUrwO2qA&response=" . request('g-recaptcha-response'));
-        $responseKeys = json_decode($response, true);
-
-        if (!$responseKeys["success"] || $responseKeys["score"] < 0.5) {
-            return back()->with('error', 'Spam-Verdacht! Bitte versuchen Sie es erneut.');
-        }
-
         try {
             $request->validate([
                 'email' => 'required|email',
@@ -412,16 +404,8 @@ class MainController extends BaseController
     {
 
         if ($request->filled('website')) {
-            return back()->with('error', 'Bot erkannt!');
+            return back()->with('error_kontakt', 'Bot erkannt!');
         }
-
-        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfHtt0qAAAAADkqOY5Y26p58hZN2Jx6eUrwO2qA&response=" . request('g-recaptcha-response'));
-        $responseKeys = json_decode($response, true);
-
-        if (!$responseKeys["success"] || $responseKeys["score"] < 0.5) {
-            return back()->with('error', 'Spam-Verdacht! Bitte versuchen Sie es erneut.');
-        }
-
 
         if ($request->has("name") && $request->has("email") && $request->has("text")) {
             $name = $request->input('name');
@@ -429,16 +413,16 @@ class MainController extends BaseController
             $text = $request->input('text');
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return back()->with('error', 'Ungültige E-Mail-Adresse!');
+                return back()->with('error_kontakt', 'Ungültige E-Mail-Adresse!');
             }
             if (preg_match('/http:\/\/|https:\/\/|www\./i', $text)) {
-                return back()->with('error', 'Links sind im Kontaktformular nicht erlaubt.');
+                return back()->with('error_kontakt', 'Links sind im Kontaktformular nicht erlaubt.');
             }
 
             $spamWords = ['buy', 'cheap', 'free', 'winner', 'lottery', 'bitcoin', 'casino', 'viagra'];
             foreach ($spamWords as $word) {
                 if (stripos($text, $word) !== false) {
-                    return back()->with('error', 'Verdächtige Nachricht erkannt.');
+                    return back()->with('error_kontakt', 'Verdächtige Nachricht erkannt.');
                 }
             }
 
