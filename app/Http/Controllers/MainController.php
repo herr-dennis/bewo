@@ -15,8 +15,6 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\ValidationException;
-use mysql_xdevapi\Exception;
 
 class MainController extends BaseController
 {
@@ -81,7 +79,7 @@ class MainController extends BaseController
                 }
             }
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             Session::flash("error", $e->getMessage());
         }
 
@@ -169,7 +167,6 @@ class MainController extends BaseController
         }catch(\Exception $e){
             Session::flash("error_db", $e->getMessage());
         }
-
 
         if(!Session::has('admin')===true){
             return redirect("Admin");
@@ -418,7 +415,6 @@ class MainController extends BaseController
             if (preg_match('/http:\/\/|https:\/\/|www\./i', $text)) {
                 return back()->with('error_kontakt', 'Links sind im Kontaktformular nicht erlaubt.');
             }
-
             $spamWords = ['buy', 'cheap', 'free', 'winner', 'lottery', 'bitcoin', 'casino', 'viagra'];
             foreach ($spamWords as $word) {
                 if (stripos($text, $word) !== false) {
@@ -447,7 +443,6 @@ class MainController extends BaseController
         } else {
             Session::flash("error_kontakt", "Bitte alle Felder ausfüllen.");
         }
-
         return redirect()->to(route('Kontakt') . '#formKontakt');
     }
 

@@ -1,7 +1,7 @@
 @extends('defaultLayout')
 
 
-@section("titel", "Bewo-Paiva Impressum")
+@section("titel", "BeWo-Paiva | Impressum")
 
 @section("main-content")
 

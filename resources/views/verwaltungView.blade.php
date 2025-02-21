@@ -13,8 +13,6 @@
 
     </div>
 
-
-
     <script>
         function onClickAbmelden(){
             window.location.href ="/Abmelden"
@@ -69,10 +67,6 @@
   <hr>
 
 
-
-
-
-
     <h2>Aktuelles einfügen</h2>
     <div class="formContainer">
 
@@ -121,8 +115,6 @@
         function actionAdminsVerwalten(){
             window.location.href="/Übersicht"
         }
-
     </script>
-
 
 @endsection

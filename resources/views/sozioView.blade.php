@@ -1,8 +1,6 @@
 @extends('sozioLayout')
 
-
-
-@section("titel", "Bewo-Paiva Soziotherapie, Unterstützung für Menschen mit einer psychischen Erkrankung ")
+@section("titel", "BeWo-Paiva Soziotherapie, Unterstützung für Menschen mit einer psychischen Erkrankung ")
 @section("main-content")
 
     <h1 class="headline" >Soziotherapie</h1>
@@ -39,15 +37,6 @@
             <li>Psychotherapeuten</li>
         </ul>
         <p><strong>können Soziotherapie verordnen</strong></p>
-
-
-
-
     </div>
-
-
-
-
-
 @endsection
 

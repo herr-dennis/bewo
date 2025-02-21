@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Allow: /
+Allow: /favicon.ico
+Disallow: /Admin
+Disallow: /Login
+
+Host: https://www.bewo-paiva.de
+Crawl-delay: 10

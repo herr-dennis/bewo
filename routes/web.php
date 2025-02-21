@@ -1,14 +1,10 @@
 <?php
-
-use App\Http\Middleware\CookieConsentMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return app()->make('\App\Http\Controllers\MainController')->getHome();
 })->middleware(\App\Http\Middleware\CookieConsentMiddleware::class);
-
-
 
 Route::get('ÜberUns', function () {
     return app()->make('\App\Http\Controllers\MainController')->getAboutUs();
