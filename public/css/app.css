@@ -595,6 +595,17 @@ input[type="submit"]:hover {
     background-color: #4a2176;
 }
 
+#button_form{
+    background-color: #5c2d91;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
 .buttonLogin{
     background-color: #5c2d91;
     color: white;

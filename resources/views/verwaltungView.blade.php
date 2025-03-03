@@ -3,7 +3,7 @@
 
 
 @section("main-content")
-    <div style="position: fixed; bottom: 0; right: 0;">
+    <div style="position: fixed; bottom: 0; right: 20%;">
         <button class="buttonLogin" onclick="onClickAbmelden()">Abmelden</button>
     </div>
 
@@ -75,7 +75,7 @@
             <label id="datumLabel">Datum</label>
             <input type="date" name="datum" placeholder="Datum eingeben" required>
 
-            <label id="veranstaltungLabel">Position</label>
+            <label id="veranstaltungLabel">Veranstaltung</label>
             <input type="text" name="veranstaltung" placeholder="Veranstaltung eingeben" required>
 
             <label id="bildLabel">Bild einfügen</label>
@@ -109,10 +109,19 @@
     @endif
 
 
-    <button class="buttonLogin"  onclick="actionAdminsVerwalten()" >Admins verwalten</button>
+    <button  style="margin: 5px"   class="buttonLogin"  onclick="actionAdminsVerwalten()" >Admins verwalten</button>
+    <button  style="margin: 5px"   class="buttonLogin"  onclick="actionAdminsVergangenes()" >History verwalten</button>
+
+    
 
     <script>
         function actionAdminsVerwalten(){
+            window.location.href="/Übersicht"
+        }
+    </script>
+
+    <script>
+        function actionAdminsVergangenes(){
             window.location.href="/Übersicht"
         }
     </script>

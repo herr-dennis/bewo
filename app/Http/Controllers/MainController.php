@@ -400,50 +400,99 @@ class MainController extends BaseController
     public function sendKontakt(Request $request)
     {
 
-        if ($request->filled('website')) {
-            return back()->with('error_kontakt', 'Bot erkannt!');
-        }
+             if ($request->filled('website')) {
+                 return back()->with('error_kontakt', 'Bot erkannt!');
+             }
 
-        if ($request->has("name") && $request->has("email") && $request->has("text")) {
-            $name = $request->input('name');
-            $email = $request->input('email');
-            $text = $request->input('text');
+             if ($request->has("name") && $request->has("email") && $request->has("text")) {
+                 $name = $request->input('name');
+                 $email = $request->input('email');
+                 $text = $request->input('text');
 
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return back()->with('error_kontakt', 'Ungültige E-Mail-Adresse!');
-            }
-            if (preg_match('/http:\/\/|https:\/\/|www\./i', $text)) {
-                return back()->with('error_kontakt', 'Links sind im Kontaktformular nicht erlaubt.');
-            }
-            $spamWords = ['buy', 'cheap', 'free', 'winner', 'lottery', 'bitcoin', 'casino', 'viagra'];
-            foreach ($spamWords as $word) {
-                if (stripos($text, $word) !== false) {
-                    return back()->with('error_kontakt', 'Verdächtige Nachricht erkannt.');
-                }
-            }
-
-            try {
-
-                Mail::send('emails.email', [
-                    'name' => $name,
-                    'email' => $email,
-                    'text' => $text
-                ], function ($message) use ($email) {
-                    $message->to('herr.dennisblacky@hotmail.de')
-                        ->subject('Neue Kontaktformular-Anfrage')
-                        ->from($email)
-                        ->replyTo($email);
-                });
+                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                     return back()->with('error_kontakt', 'Ungültige E-Mail-Adresse!');
+                 }
+                 if (preg_match('/http:\/\/|https:\/\/|www\./i', $text)) {
+                     return back()->with('error_kontakt', 'Links sind im Kontaktformular nicht erlaubt.');
+                 }
+                 $spamWords = ['buy', 'cheap', 'free', 'winner', 'lottery', 'bitcoin', 'casino', 'viagra'];
+                 foreach ($spamWords as $word) {
+                     if (stripos($text, $word) !== false) {
+                         return back()->with('error_kontakt', 'Verdächtige Nachricht erkannt.');
+                     }
+                 }
 
 
-                Session::flash("msg_kontakt", "Ihre Nachricht wurde erfolgreich gesendet.");
-            } catch (\Exception $e) {
-                Session::flash("error_kontakt", "Da ist etwas schief gelaufen. Fehlercode 0x5".$e->getMessage());
-            }
-        } else {
-            Session::flash("error_kontakt", "Bitte alle Felder ausfüllen.");
-        }
-        return redirect()->to(route('Kontakt') . '#formKontakt');
+                /*
+                 * ÜBERPRÜFUNG DAS TOKENS!
+                 * */
+                 $secretKey = env('RECAPTCHA_SECRET_KEY');
+                 $response = $request->input('g-recaptcha-response'); // Stelle sicher, dass das reCAPTCHA-Token korrekt übermittelt wird
+
+                // Überprüfe, ob der reCAPTCHA-Token vorhanden ist
+                 if (empty($response)) {
+                     Session::flash("error_kontakt", "reCAPTCHA ungültig");
+                     return redirect()->to(route('Kontakt') . '#formKontakt');
+                 }
+
+                 $url = 'https://www.google.com/recaptcha/api/siteverify';
+                 $data = [
+                     'secret' => $secretKey,
+                     'response' => $response,
+                 ];
+
+                 // HTTP-Anfrage an Google senden
+                 $options = [
+                     'http' => [
+                         'method'  => 'POST',
+                         'header'  => "Content-Type: application/x-www-form-urlencoded\r\n",
+                         'content' => http_build_query($data),
+                     ],
+                 ];
+                 $context = stream_context_create($options);
+                 $verify = file_get_contents($url, false, $context);
+                 if ($verify === false) {
+                     Session::flash("error_kontakt", "Es gab ein Problem bei der reCAPTCHA-Verifizierung.");
+                     return redirect()->to(route('Kontakt') . '#formKontakt');
+                 }
+
+                  // Überprüfe das Antwort-JSON von Google
+                 $captcha_success = json_decode($verify);
+
+                 if ($captcha_success->success) {
+                     // Erfolgreiche Verifizierung
+                 } else {
+                     $errorCodes = implode(", ", $captcha_success->{"error-codes"});
+                     Session::flash("error_kontakt", "reCAPTCHA ungültig. Fehler: " . $errorCodes);
+                     return redirect()->to(route('Kontakt') . '#formKontakt');
+                 }
+
+
+
+                 try {
+
+                     Mail::send('emails.email', [
+                         'name' => $name,
+                         'email' => $email,
+                         'text' => $text
+                     ], function ($message) use ($email) {
+                         $message->to('herr.dennisblacky@hotmail.de')
+                             ->subject('Neue Kontaktformular-Anfrage')
+                             ->from($email)
+                             ->replyTo($email);
+                     });
+
+
+                     Session::flash("msg_kontakt", "Ihre Nachricht wurde erfolgreich gesendet.");
+                 } catch (\Exception $e) {
+                     Session::flash("error_kontakt", "Da ist etwas schief gelaufen. Fehlercode 0x5");
+                     return redirect()->to(route('Kontakt') . '#formKontakt');
+                 }
+             } else {
+                 Session::flash("error_kontakt", "Bitte alle Felder ausfüllen.");
+             }
+             return redirect()->to(route('Kontakt') . '#formKontakt');
+
     }
 
 

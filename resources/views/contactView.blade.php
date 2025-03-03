@@ -17,19 +17,30 @@
 
     <div>
 
-        <form class="formContainer" id="formKontakt" method="post" action="{{route("sendKontakt")}}" >
+        <form class="formContainer" id="formKontakt" method="post" action="{{ route('sendKontakt') }}">
             @csrf
-            <label id="überschriftForm" >Kontaktformular</label>
+            <script src="https://www.google.com/recaptcha/api.js"></script>
+            <label id="überschriftForm">Kontaktformular</label>
             <label>Ihr Name</label>
             <input type="text" name="name" placeholder="Ihr Name" required>
             <label>Ihre E-Mail</label>
-            <input type="email" name="email" required  placeholder="Ihr E-Mail" >
+            <input type="email" name="email" required placeholder="Ihr E-Mail">
             <label>Ihr Anliegen</label>
-            <textarea name="text" required placeholder="Ihr Nachricht an uns!" >
-            </textarea>
-            <input  type="submit" placeholder="Abschicken" >
-            <input type="text" name="website" style="display:none;">
+            <textarea name="text" required placeholder="Ihre Nachricht an uns!"></textarea>
+
+            <button id="button_form" class="g-recaptcha"
+                    data-sitekey="6Lf5kegqAAAAAGWWhy3nUItN7TR7kBEpmb7XPcf9"
+                    data-callback='onSubmit'
+                    data-action='submit'>Submit</button>
+
+            <script>
+                function onSubmit(token) {
+                    document.getElementById("formKontakt").submit();
+                }
+            </script>
+
         </form>
+
     </div>
     @if(\Illuminate\Support\Facades\Session::has('error_kontakt'))
         <label class="errorMsg">{{ \Illuminate\Support\Facades\Session::get('error_kontakt') }}</label>
