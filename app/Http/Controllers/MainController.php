@@ -464,9 +464,17 @@ class MainController extends BaseController
                  } else {
                      $errorCodes = implode(", ", $captcha_success->{"error-codes"});
                      Session::flash("error_kontakt", "reCAPTCHA ungültig. Fehler: " . $errorCodes);
-                    echo $errorCodes;
-                     print_r("$response");
+                     echo "Fehlercodes: " . $errorCodes;
+                     echo "<br>";
+                     echo "Response: ";
+                     print_r($response);
+                     echo "<br>";
+                     echo "Verify Response: ";
                      print_r($verify);
+                     echo "<br>";
+                     echo "Captcha Success Response: ";
+                     print_r($captcha_success);
+                     echo "<br>";
                      // return redirect()->to(route('Kontakt') . '#formKontakt');
                  }
 
