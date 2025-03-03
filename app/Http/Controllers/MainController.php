@@ -422,52 +422,6 @@ class MainController extends BaseController
                      }
                  }
 
-
-                /*
-                 * ÜBERPRÜFUNG DAS TOKENS!
-                 * */
-                 $secretKey = env('RECAPTCHA_SECRET_KEY');
-                 $response = $request->input('g-recaptcha-response'); // Stelle sicher, dass das reCAPTCHA-Token korrekt übermittelt wird
-
-                // Überprüfe, ob der reCAPTCHA-Token vorhanden ist
-                 if (empty($response)) {
-                     Session::flash("error_kontakt", "reCAPTCHA ungültig");
-                     return redirect()->to(route('Kontakt') . '#formKontakt');
-                 }
-
-                 $url = 'https://www.google.com/recaptcha/api/siteverify';
-                 $data = [
-                     'secret' => $secretKey,
-                     'response' => $response,
-                 ];
-
-                 // HTTP-Anfrage an Google senden
-                 $options = [
-                     'http' => [
-                         'method'  => 'POST',
-                         'header'  => "Content-Type: application/x-www-form-urlencoded\r\n",
-                         'content' => http_build_query($data),
-                     ],
-                 ];
-                 $context = stream_context_create($options);
-                 $verify = file_get_contents($url, false, $context);
-                 if ($verify === false) {
-                     Session::flash("error_kontakt", "Es gab ein Problem bei der reCAPTCHA-Verifizierung.");
-                     return redirect()->to(route('Kontakt') . '#formKontakt');
-                 }
-
-                  // Überprüfe das Antwort-JSON von Google
-                 $captcha_success = json_decode($verify);
-
-                 if ($captcha_success->success) {
-                     // Erfolgreiche Verifizierung
-                 } else {
-                     $errorCodes = implode(", ", $captcha_success->{"error-codes"});
-                     Session::flash("error_kontakt", "reCAPTCHA ungültig. Fehler: " . $errorCodes);
-
-                 }
-
-
                  try {
 
                      Mail::send('emails.email', [
@@ -490,7 +444,7 @@ class MainController extends BaseController
              } else {
                  Session::flash("error_kontakt", "Bitte alle Felder ausfüllen.");
              }
-           //  return redirect()->to(route('Kontakt') . '#formKontakt');
+            return redirect()->to(route('Kontakt') . '#formKontakt');
 
     }
 
