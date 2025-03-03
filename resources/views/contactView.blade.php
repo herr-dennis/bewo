@@ -32,7 +32,14 @@
                     data-sitekey="6Lf5kegqAAAAAGWWhy3nUItN7TR7kBEpmb7XPcf9"
                     data-callback='onSubmit'
                     data-action='submit'>Abschicken</button>
+
             <script>
+
+                document.getElementById('button_form').addEventListener('click', function() {
+                    console.log(document.getElementById("g-recaptcha-response").value);
+                });
+
+
                 function onSubmit(token) {
                     document.getElementById("formKontakt").submit();
                 }
