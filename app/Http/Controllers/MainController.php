@@ -439,7 +439,7 @@ class MainController extends BaseController
                      Session::flash("msg_kontakt", "Ihre Nachricht wurde erfolgreich gesendet.");
                  } catch (\Exception $e) {
                      Session::flash("error_kontakt", "Da ist etwas schief gelaufen. Fehlercode 0x5");
-                     //return redirect()->to(route('Kontakt') . '#formKontakt');
+                     return redirect()->to(route('Kontakt') . '#formKontakt');
                  }
              } else {
                  Session::flash("error_kontakt", "Bitte alle Felder ausfüllen.");
