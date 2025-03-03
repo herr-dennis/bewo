@@ -468,7 +468,6 @@ class MainController extends BaseController
                  }
 
 
-
                  try {
 
                      Mail::send('emails.email', [

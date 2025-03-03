@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="description" content="BeWo Paiva Würselen. Ambulantes betreutes Wohnen. Unterstützung für Menschen mit einer psychischen Erkrankung. ">
     <meta name="robots" content="index, follow"> <!-- Suchmaschinen dürfen die Seite indexieren und Links folgen -->
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdCoeYqAAAAAH2CA0GXhV52Nzg3nBIqJw9c4g0B"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+
 </head>
 <body>
 <header>

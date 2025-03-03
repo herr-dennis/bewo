@@ -31,8 +31,7 @@
             <button id="button_form" class="g-recaptcha"
                     data-sitekey="6Lf5kegqAAAAAGWWhy3nUItN7TR7kBEpmb7XPcf9"
                     data-callback='onSubmit'
-                    data-action='submit'>Submit</button>
-
+                    data-action='submit'>Abschicken</button>
             <script>
                 function onSubmit(token) {
                     document.getElementById("formKontakt").submit();
