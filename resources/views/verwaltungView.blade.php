@@ -111,15 +111,19 @@
 
     <button  style="margin: 5px"   class="buttonLogin"  onclick="actionAdminsVerwalten()" >Admins verwalten</button>
     <button  style="margin: 5px"   class="buttonLogin"  onclick="actionAdminsVergangenes()" >History verwalten</button>
+    <button  style="margin: 5px"   class="buttonLogin"  onclick="actionLogs()" >Server Logs, reCaptcha</button>
 
-    
 
     <script>
         function actionAdminsVerwalten(){
             window.location.href="/Übersicht"
         }
     </script>
-
+    <script>
+        function actionLogs(){
+            window.location.href="/Logs"
+        }
+    </script>
     <script>
         function actionAdminsVergangenes(){
             window.location.href="/Übersicht"

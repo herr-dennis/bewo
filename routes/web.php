@@ -1,6 +1,10 @@
 <?php
+
+use App\Http\Controllers\SitemapController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 Route::get('/', function () {
     return app()->make('\App\Http\Controllers\MainController')->getHome();
@@ -84,3 +88,5 @@ Route::post('sendKontakt', function (Request $request) {
 Route::get('Abmelden', function () {
     return app()->make('\App\Http\Controllers\MainController')->abmelden();
 });
+
+Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);

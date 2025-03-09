@@ -6,12 +6,15 @@ use App\Models\Admins;
 use App\Models\Dates;
 use App\Models\InkrementAufrufe;
 use App\Models\Mitarbeiter;
+use App\Models\MyLogger;
 use App\Models\Newsletter;
 use App\Models\SendingEmails;
 use App\Models\Termine;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -51,10 +54,9 @@ class MainController extends BaseController
 
     public function getTeam()
     {
-        try{
+        try {
             $mitarbeiter = mitarbeiter::query()->select('*')->get();
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             Session::flash("error_db", $e->getMessage());
         }
         return view('teamView', ['data' => $mitarbeiter]);
@@ -73,10 +75,11 @@ class MainController extends BaseController
                 // Datum des Termins als Carbon-Objekt parsen
                 $termin = Carbon::parse($termineDatum->datum);
 
-                // Falls der Termin in der Vergangenheit liegt, löschen
-                if ($termin->lt($currentDate)) {
+                // Falls der Termin vor dem heutigen Datum liegt, löschen
+                if ($termin->lt($currentDate->startOfDay())) {
                     Termine::query()->where('datum', $termineDatum->datum)->delete();
                 }
+
             }
 
         } catch (\Exception $e) {
@@ -112,8 +115,8 @@ class MainController extends BaseController
     public function getLogin()
     {
 
-        if(Session::has('admin')){
-            if(Session::get("admin")===true){
+        if (Session::has('admin')) {
+            if (Session::get("admin") === true) {
                 return redirect("Verwaltung");
             }
         }
@@ -127,8 +130,8 @@ class MainController extends BaseController
     public function verifizierung(Request $request)
     {
 
-        if(Session::has('admin')){
-            if(Session::get("admin")===true){
+        if (Session::has('admin')) {
+            if (Session::get("admin") === true) {
                 return redirect("Verwaltung");
             }
         }
@@ -161,32 +164,32 @@ class MainController extends BaseController
 
     public function getVerwaltung()
     {
-        $aufrufe= null;
-        try{
+        $aufrufe = null;
+        try {
             $aufrufe = Dates::query()->select("aufrufe")->get();
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             Session::flash("error_db", $e->getMessage());
         }
 
-        if(!Session::has('admin')===true){
+        if (!Session::has('admin') === true) {
             return redirect("Admin");
         }
 
-        return view("verwaltungView" , ['data' => $aufrufe] );
+        return view("verwaltungView", ['data' => $aufrufe]);
     }
 
 
     public function getÜbersicht()
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect("Admin");
         }
 
-        try{
+        try {
             $termine = Termine::query()->select('*')->get();
             $data = Mitarbeiter::query()->select('*')->get();
             $email = Newsletter::query()->select('*')->get();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             Session::flash("error", $e->getMessage());
         }
 
@@ -205,7 +208,7 @@ class MainController extends BaseController
     public function insertVerwaltung(Request $request)
     {
 
-        if(!Session::has('admin')===true){
+        if (!Session::has('admin') === true) {
             return redirect("Admin");
         }
 
@@ -249,16 +252,16 @@ class MainController extends BaseController
             if ($request->has("veranstaltung") && $request->has("datum")) {
                 $veranstaltung = $request->get("veranstaltung");
                 $datum = $request->get("datum");
-                if($request->has("text")){
+                if ($request->has("text")) {
                     $text = nl2br($request->input('text'), false);
-                }else{
+                } else {
                     $text = null;
                 }
                 $bild = null;
-                if($request->file()!=null){
+                if ($request->file() != null) {
                     $path = Storage::putFile('/public/images', $request->file('bild'));
-                    $path = "/storage/images/".basename($path);
-                    $bild=$path;
+                    $path = "/storage/images/" . basename($path);
+                    $bild = $path;
 
                 }
 
@@ -287,7 +290,7 @@ class MainController extends BaseController
         } else {
             Session::flash("error_2", "Fehlercode 0x3: Fehler beim Einfügen .");
         }
-      return redirect()->to(route('Verwaltung') . '#form2');
+        return redirect()->to(route('Verwaltung') . '#form2');
     }
 
     /**
@@ -298,12 +301,11 @@ class MainController extends BaseController
     public function deleteUser(Request $request)
     {
 
-        if(!Session::has('admin')===true){
+        if (!Session::has('admin') === true) {
             return redirect("Admin");
         }
 
-
-        if ($request->input("form1")==1) {
+        if ($request->input("form1") == 1) {
             $id = $request->input('id');
             try {
                 $deletedRows = Mitarbeiter::query()->where('id', $id)->delete();
@@ -318,7 +320,7 @@ class MainController extends BaseController
             return redirect()->to(route('Übersicht') . '#formDelete');
         }
 
-        if ($request->input("form2")==2) {
+        if ($request->input("form2") == 2) {
             $name = $request->input('name');
 
             try {
@@ -331,10 +333,10 @@ class MainController extends BaseController
             } catch (\Exception $exception) {
                 Session::flash("error_2", "Fehler beim Löschen: " . $exception->getMessage());
             }
-           return redirect()->to(route('Übersicht') . '#formDelete2');
+            return redirect()->to(route('Übersicht') . '#formDelete2');
         }
 
-        if ($request->input("form3")==3) {
+        if ($request->input("form3") == 3) {
             $veranstaltung = $request->input('veranstaltung');
 
             try {
@@ -349,11 +351,11 @@ class MainController extends BaseController
             }
             return redirect()->to(route('Übersicht') . '#formDelete3');
         }
-        return  redirect()->back();
+        return redirect()->back();
     }
 
     /**
-     *  @param Request $request Formular Parameter
+     * @param Request $request Formular Parameter
      *  Fügt die Daten des Newsletters in die Datenbank ein.
      */
     public function insertNewsletter(Request $request)
@@ -363,7 +365,6 @@ class MainController extends BaseController
             $request->validate([
                 'email' => 'required|email',
             ]);
-
 
             if ($request->has("name") && $request->has("email")) {
                 $name = $request->input('name');
@@ -400,51 +401,84 @@ class MainController extends BaseController
     public function sendKontakt(Request $request)
     {
 
-             if ($request->filled('website')) {
-                 return back()->with('error_kontakt', 'Bot erkannt!');
-             }
+        if ($request->filled('website')) {
+            return back()->with('error_kontakt', 'Bot erkannt!');
+        }
 
-             if ($request->has("name") && $request->has("email") && $request->has("text")) {
-                 $name = $request->input('name');
-                 $email = $request->input('email');
-                 $text = $request->input('text');
+        if ($request->has("name") && $request->has("email") && $request->has("text")) {
+            $name = $request->input('name');
+            $email = $request->input('email');
+            $text = $request->input('text');
 
-                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                     return back()->with('error_kontakt', 'Ungültige E-Mail-Adresse!');
-                 }
-                 if (preg_match('/http:\/\/|https:\/\/|www\./i', $text)) {
-                     return back()->with('error_kontakt', 'Links sind im Kontaktformular nicht erlaubt.');
-                 }
-                 $spamWords = ['buy', 'cheap', 'free', 'winner', 'lottery', 'bitcoin', 'casino', 'viagra'];
-                 foreach ($spamWords as $word) {
-                     if (stripos($text, $word) !== false) {
-                         return back()->with('error_kontakt', 'Verdächtige Nachricht erkannt.');
-                     }
-                 }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return back()->with('error_kontakt', 'Ungültige E-Mail-Adresse!');
+            }
+            if (preg_match('/http:\/\/|https:\/\/|www\./i', $text)) {
+                return back()->with('error_kontakt', 'Links sind im Kontaktformular nicht erlaubt.');
+            }
+            $spamWords = ['buy', 'cheap', 'free', 'winner', 'lottery', 'bitcoin', 'casino', 'viagra'];
+            foreach ($spamWords as $word) {
+                if (stripos($text, $word) !== false) {
+                    return back()->with('error_kontakt', 'Verdächtige Nachricht erkannt.');
+                }
+            }
+            $Logger = new MyLogger();
+            # BEGIN Setting reCaptcha v3 validation data
+            $url = "https://www.google.com/recaptcha/api/siteverify";
+            $data = [
+                'secret' => env("RECAPTCHA_SECRET_KEY"),
+                'response' => $_POST['g-recaptcha-response'],
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            ];
 
-                 try {
+            $options = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($data)
+                )
+            );
 
-                     Mail::send('emails.email', [
-                         'name' => $name,
-                         'email' => $email,
-                         'text' => $text
-                     ], function ($message) use ($email) {
-                         $message->to('herr.dennisblacky@hotmail.de')
-                             ->subject('Neue Kontaktformular-Anfrage')
-                             ->from($email)
-                             ->replyTo($email);
-                     });
+            # Creates and returns stream context with options supplied in options preset
+            $context = stream_context_create($options);
+            # file_get_contents() is the preferred way to read the contents of a file into a string
+            $response = file_get_contents($url, false, $context);
+            # Takes a JSON encoded string and converts it into a PHP variable
+            $res = json_decode($response, true);
+            # END setting reCaptcha v3 validation data
 
+            $Logger->log($response);
 
-                     Session::flash("msg_kontakt", "Ihre Nachricht wurde erfolgreich gesendet.");
-                 } catch (\Exception $e) {
-                     Session::flash("error_kontakt", "Da ist etwas schief gelaufen. Fehlercode 0x5");
-                     return redirect()->to(route('Kontakt') . '#formKontakt');
-                 }
-             } else {
-                 Session::flash("error_kontakt", "Bitte alle Felder ausfüllen.");
-             }
+            if ($res['success'] == true && $res['score'] >= 0.5) {
+
+                try {
+
+                    Mail::send('emails.email', [
+                        'name' => $name,
+                        'email' => $email,
+                        'text' => $text
+                    ], function ($message) use ($email) {
+                        $message->to('herr.dennisblacky@hotmail.de')
+                            ->subject('Neue Kontaktformular-Anfrage')
+                            ->from($email)
+                            ->replyTo($email);
+                    });
+
+                    Session::flash("msg_kontakt", "Ihre Nachricht wurde erfolgreich gesendet.");
+                } catch (\Exception $e) {
+                    Session::flash("error_kontakt", "Da ist etwas schief gelaufen. Fehlercode 0x5");
+                    return redirect()->to(route('Kontakt') . '#formKontakt');
+                }
+            } else {
+                Session::flash("error_kontakt", "Fehler beim Prüfen des Recaptcha. Nutzen Sie: info@bewo-paiva.de");
+                return redirect()->to(route('Kontakt') . '#formKontakt');
+            }
+        } else {
+            Session::flash("error_kontakt", "Bitte alle Felder ausfüllen.");
             return redirect()->to(route('Kontakt') . '#formKontakt');
+        }
+
+         return redirect()->to(route('Kontakt') . '#formKontakt');
 
     }
 
