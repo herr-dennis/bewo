@@ -222,6 +222,20 @@ class MainController extends BaseController
                 $telefon = $request->get("telefon") ?: null;
                 $email = $request->get("email") ?: null;
 
+                if ($request->file()) {
+                    $path = Storage::putFile('/public/images', $request->file('bild'));
+                    $path = "/storage/images/" . basename($path);
+                    $bild = $path;
+
+                    // Überprüfen, ob die Datei existiert
+                    if (!Storage::exists($path)) {
+                        Session::flash("error", "Bild defekt oder zu groß");
+                    }
+                }
+
+
+
+
                 try {
                     Mitarbeiter::query()->insert([
                         'name' => $name,

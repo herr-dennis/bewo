@@ -24,10 +24,12 @@
     <h2>{{$item["name"]}}</h2>
     <h3>{{$item["position"]}}</h3>
 
-    @if(!empty($item["bildUrl"]))
+    @if(empty($item["bildUrl"]))
     <img src="https://via.placeholder.com/100" alt="">
      @endif
-
+    @if(!empty($item["bildUrl"]))
+        <img src="{{asset($item["bildUrl"])}}" alt="">
+    @endif
         <p>{{$item["text"]}}</p>
 
     <div class="contact-info">
