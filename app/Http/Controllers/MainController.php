@@ -114,7 +114,6 @@ class MainController extends BaseController
 
     public function getLogin()
     {
-
         if (Session::has('admin')) {
             if (Session::get("admin") === true) {
                 return redirect("Verwaltung");
@@ -164,15 +163,15 @@ class MainController extends BaseController
 
     public function getVerwaltung()
     {
+
+        if (!Session::has('admin')) {
+            return redirect("Admin");
+        }
         $aufrufe = null;
         try {
             $aufrufe = Dates::query()->select("aufrufe")->get();
         } catch (\Exception $e) {
             Session::flash("error_db", $e->getMessage());
-        }
-
-        if (!Session::has('admin') === true) {
-            return redirect("Admin");
         }
 
         return view("verwaltungView", ['data' => $aufrufe]);
@@ -208,7 +207,7 @@ class MainController extends BaseController
     public function insertVerwaltung(Request $request)
     {
 
-        if (!Session::has('admin') === true) {
+        if (!Session::has('admin')) {
             return redirect("Admin");
         }
 
@@ -232,9 +231,6 @@ class MainController extends BaseController
                         Session::flash("error", "Bild defekt oder zu groß");
                     }
                 }
-
-
-
 
                 try {
                     Mitarbeiter::query()->insert([
@@ -374,37 +370,72 @@ class MainController extends BaseController
      */
     public function insertNewsletter(Request $request)
     {
+        $Logger = new MyLogger();
+
+        # reCAPTCHA v3 Validierung
+        $url = "https://www.google.com/recaptcha/api/siteverify";
+        $data = [
+            'secret' => env("RECAPTCHA_SECRET_KEY"),
+            'response' => $_POST['g-recaptcha-response'] ?? '',
+            'remoteip' => $_SERVER['REMOTE_ADDR'] ?? null
+        ];
+
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            ]
+        ];
 
         try {
-            $request->validate([
-                'email' => 'required|email',
-            ]);
+            $context = stream_context_create($options);
+            $response = file_get_contents($url, false, $context);
+            if ($response === false) {
+                throw new \Exception("Fehler bei der Verbindung zu reCAPTCHA.");
+            }
+            $res = json_decode($response, true);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Fehler bei der Verbindung zu reCAPTCHA.');
+        }
 
-            if ($request->has("name") && $request->has("email")) {
-                $name = $request->input('name');
-                $email = $request->input('email');
+        $Logger->log($response);
 
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    return back()->with('error', 'Ungültige E-Mail-Adresse!');
-                }
+        if (!is_array($res) || !isset($res['success']) || !$res['success'] || $res['score'] < 0.5) {
+            return back()->with('error', 'reCAPTCHA-Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.');
+        }
 
-                Newsletter::query()->insert([
-                    'email' => $email,
-                    'name' => $name,
-                    'consent_given_at' => now()
-                ]);
+        # Validierung der Eingaben
+        $request->validate([
+            'email' => 'required|email',
+            'name' => 'required|string|max:255',
+        ]);
 
-                Session::flash("msg", "Newsletter erfolgreich angelegt.");
+        try {
+            $name = $request->input('name');
+            $email = $request->input('email');
 
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return back()->with('error', 'Ungültige E-Mail-Adresse!');
             }
 
+            Newsletter::query()->insert([
+                'email' => $email,
+                'name' => $name,
+                'consent_given_at' => now(),
+            ]);
+
+            Session::flash("msg", "Newsletter erfolgreich angelegt.");
         } catch (\Exception $e) {
+            $Logger->log("DB-Fehler: " . $e->getMessage());
             Session::flash("error", "E-Mail schon vorhanden oder Fehlercode 0x4");
             return redirect()->to(route('Kontakt') . '#formNews');
         }
 
         return redirect()->to(route('Kontakt') . '#formNews');
     }
+
+
 
 
     /**
@@ -507,6 +538,56 @@ class MainController extends BaseController
         }
     }
 
+    public function getLogs()
+    {
+        if (!Session::has('admin')) {
+            return redirect("Admin");
+        }
+
+        $filePath = "log.txt";
+
+        if (!file_exists($filePath)) {
+            return view("logsView", ['logs' => "Log-Datei nicht gefunden."]);
+        }
+
+        $logs = array();
+        $file = fopen($filePath, "r");
+        while (!feof($file)) {
+            $logs[] = fgets($file);
+        }
+        fclose($file);
+
+        return view("logsView",  ["data"=>$logs]);
+    }
+
+
+    public function logLöschen()
+    {
+        if (!Session::has('admin')) {
+            return redirect("Admin");
+        }
+
+        $filePath = "log.txt";
+
+        if (!file_exists($filePath)) {
+            return view("logsView", ['logs' => "Log-Datei nicht gefunden."]);
+        }
+
+        // Datei mit "w" öffnen, um sie zu leeren
+        $file = fopen($filePath, "w");
+
+        if ($file) {
+            fclose($file);
+        } else {
+            Session::flash("error", "Fehler beim Laden der Datei");
+            return view("logsView");
+        }
+        return redirect()->back()->with('msg', 'Log-Datei wurde erfolgreich geleert.');
+    }
+
+
+
 
 }
+
 

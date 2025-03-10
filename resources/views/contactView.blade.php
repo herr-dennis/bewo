@@ -2,12 +2,10 @@
 
 
 @section("titel", "BeWo-Paiva Kontakt")
+@section("beschreibung", "BeWo-Paiva Kontaktseite")
 
 @section("main-content")
-
-
     <h1 class="headline">Kontakt</h1>
-
     <div class="defaultContainer">
     <p>Schön, dass Sie da sind!
         Wir freuen uns über Ihr Interesse. Wenn Sie Fragen, Anregungen oder Wünsche haben, können Sie uns über das untenstehende Kontaktformular ganz unkompliziert erreichen.
@@ -33,24 +31,48 @@
 
         <script src="https://www.google.com/recaptcha/api.js?render=6Lf5kegqAAAAAGWWhy3nUItN7TR7kBEpmb7XPcf9"></script>
         <script>
-            document.getElementById('formKontakt').addEventListener('submit', function (event) {
+            document.addEventListener("DOMContentLoaded", function () {
+                // Überprüfung, ob das Formular existiert, bevor der Event-Listener gesetzt wird
+                let kontaktForm = document.getElementById('formKontakt');
+                let newsForm = document.getElementById('formNews');
+
+                if (kontaktForm) {
+                    kontaktForm.addEventListener('submit', function (event) {
+                        handleReCaptcha(event, 'formKontakt', 'g-recaptcha-response');
+                    });
+                }
+
+                if (newsForm) {
+                    newsForm.addEventListener('submit', function (event) {
+                        handleReCaptcha(event, 'formNews', 'g-recaptcha-newsletter');
+                    });
+                }
+            });
+
+            function handleReCaptcha(event, formId, tokenFieldId) {
                 event.preventDefault(); // Verhindert das direkte Absenden
 
                 grecaptcha.ready(function () {
-                    grecaptcha.execute('6Lf5kegqAAAAAGWWhy3nUItN7TR7kBEpmb7XPcf9', { action: 'submit' }).then(function (token) {
-                        document.getElementById('g-recaptcha-response').value = token;
+                    grecaptcha.execute('6Lf5kegqAAAAAGWWhy3nUItN7TR7kBEpmb7XPcf9', { action: 'submit' })
+                        .then(function (token) {
+                            let tokenField = document.getElementById(tokenFieldId);
+                            if (tokenField) {
+                                tokenField.value = token;
+                            }
 
-                        // Entferne den Event-Listener, um eine Endlosschleife zu verhindern
-                        document.getElementById('formKontakt').removeEventListener('submit', arguments.callee);
-
-                        // Sende das Formular jetzt endgültig ab
-                        document.getElementById('formKontakt').submit();
-                    }).catch(function (error) {
-                        alert('reCAPTCHA Fehler: ' + error);
-                    });
+                            let form = document.getElementById(formId);
+                            if (form) {
+                                form.submit();
+                            }
+                        })
+                        .catch(function (error) {
+                            alert('reCAPTCHA Fehler: ' + error);
+                        });
                 });
-            });
+            }
         </script>
+
+
 
     </div>
     @if(\Illuminate\Support\Facades\Session::has('error_kontakt'))
@@ -86,11 +108,10 @@
                 <input type="checkbox" name="datenschutz" value="akzeptiert" required>
                 <span>Ich habe die <a href="/Datenschutz" target="_blank">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</span>
             </label>
-
-
+            <input type="hidden" id="g-recaptcha-newsletter" name="g-recaptcha-response">
             <input type="hidden" name="form_name" value="form">
 
-            <input type="submit" value="Ich möchte den Newsletter!">
+            <button  class="buttonLogin" type="submit" id="submitBtn">Abschicken</button>
         </form>
     </div>
 

@@ -90,3 +90,11 @@ Route::get('Abmelden', function () {
 });
 
 Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
+
+Route::get('Logs', function () {
+    return app()->make('\App\Http\Controllers\MainController')->getLogs();
+})->name('Logs');
+
+Route::get('LogLöschen', function () {
+    return app()->make('\App\Http\Controllers\MainController')->logLöschen();
+})->name('LogLöschen');

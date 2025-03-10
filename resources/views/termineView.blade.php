@@ -1,6 +1,6 @@
 @extends('defaultLayout')
 @section("titel", "BeWo-Paiva | Aktuelles")
-
+@section("beschreibung", " Aktuelle Termine, Newsletter")
 @section("main-content")
 
   <h1 class="headline" >Aktuelles</h1>

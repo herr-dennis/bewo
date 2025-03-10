@@ -1,8 +1,8 @@
 @extends('defaultLayout')
 
 
-@section("titel", "Bewo-Paiva Datenschutz")
-
+@section("titel", "BeWo-Paiva | Datenschutz")
+@section("beschreibung", "Datenschutz, alle rechtlichen Dinge")
 @section("main-content")
 
 

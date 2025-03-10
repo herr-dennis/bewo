@@ -8,7 +8,7 @@
     <link href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}" rel="stylesheet">
     <link rel="icon" href="{{ asset('FaviconLogoSozio.jpg') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta name="description" content="BeWo Paiva Würselen. Ambulantes betreutes Wohnen. Unterstützung für Menschen mit einer psychischen Erkrankung. ">
+    <meta name="description" content="BeWo Paiva Würselen. Soziotherapie. Unterstützung für Menschen mit einer psychischen Erkrankung. ">
     <meta name="robots" content="index, follow"> <!-- Suchmaschinen dürfen die Seite indexieren und Links folgen -->
 
 </head>

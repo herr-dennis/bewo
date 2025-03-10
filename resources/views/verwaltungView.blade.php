@@ -108,10 +108,12 @@
         <label class="erfolgreichMsg" >{{\Illuminate\Support\Facades\Session::get("msg_email")}}</label>
     @endif
 
+   <div class="container">
+       <button  style="margin: 5px"   class="buttonLogin"  onclick="actionAdminsVerwalten()" >Admins verwalten</button>
+       <button  style="margin: 5px"   class="buttonLogin"  onclick="actionAdminsVergangenes()" >History verwalten</button>
+       <button  style="margin: 5px"   class="buttonLogin"  onclick="actionLogs()" >Server Logs, reCaptcha</button>
+   </div>
 
-    <button  style="margin: 5px"   class="buttonLogin"  onclick="actionAdminsVerwalten()" >Admins verwalten</button>
-    <button  style="margin: 5px"   class="buttonLogin"  onclick="actionAdminsVergangenes()" >History verwalten</button>
-    <button  style="margin: 5px"   class="buttonLogin"  onclick="actionLogs()" >Server Logs, reCaptcha</button>
 
 
     <script>

@@ -1,5 +1,5 @@
 @extends("defaultLayout")
-
+@section("beschreibung", " Ambulantes betreutes Wohnen | Würselen")
 @section("titel","BeWo-Paiva | Ambulantes betreutes Wohnen | Würselen")
 @section("main-content")
 
