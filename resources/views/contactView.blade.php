@@ -29,12 +29,12 @@
             <button class="buttonLogin" type="button" onclick="executeReCaptchaKontakt()">Absenden</button>
 
         </form>
-        <script src="https://www.google.com/recaptcha/api.js?render=6Ldz2vQqAAAAAMAYAJ9W4msLDowqxzh9qkWS0gv7"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LeK2PQqAAAAAKQCwnwgJMArhA4Is3FHGd9vXx8s"></script>
 
         <script>
             function executeReCaptchaKontakt() {
                 grecaptcha.ready(function () {
-                    grecaptcha.execute('6Ldz2vQqAAAAAMAYAJ9W4msLDowqxzh9qkWS0gv7', { action: 'submit' }).then(function (token) {
+                    grecaptcha.execute('6LeK2PQqAAAAAKQCwnwgJMArhA4Is3FHGd9vXx8s', { action: 'submit' }).then(function (token) {
                         document.getElementById('g-recaptcha-response').value = token;
                         document.getElementById("formKontakt").submit();
                     });
@@ -82,12 +82,12 @@
             <button class="buttonLogin" type="button" onclick="executeReCaptchaNews()">Absenden</button>
 
         </form>
-        <script src="https://www.google.com/recaptcha/api.js?render=6Ldz2vQqAAAAAMAYAJ9W4msLDowqxzh9qkWS0gv7"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LeK2PQqAAAAAKQCwnwgJMArhA4Is3FHGd9vXx8s"></script>
 
         <script>
             function executeReCaptchaNews() {
                 grecaptcha.ready(function () {
-                    grecaptcha.execute('6Ldz2vQqAAAAAMAYAJ9W4msLDowqxzh9qkWS0gv7', { action: 'submit' }).then(function (token) {
+                    grecaptcha.execute('6LeK2PQqAAAAAKQCwnwgJMArhA4Is3FHGd9vXx8s', { action: 'submit' }).then(function (token) {
                         document.getElementById('g-recaptcha-response_news').value = token;
                         document.getElementById("formNews").submit();
                     });
