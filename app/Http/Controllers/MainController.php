@@ -376,11 +376,11 @@ class MainController extends BaseController
     public function insertNewsletter(Request $request)
     {
         $Logger = new MyLogger();
-
+        $secretKey = "";
         # reCAPTCHA v3 Validierung
         $url = "https://www.google.com/recaptcha/api/siteverify";
         $data = [
-            'secret' => env("RECAPTCHA_SECRET_KEY"),
+            'secret' =>   $secretKey,
             'response' => $_POST['g-recaptcha-response'] ?? '',
             'remoteip' => $_SERVER['REMOTE_ADDR'] ?? null
         ];
@@ -473,12 +473,21 @@ class MainController extends BaseController
             }
             $Logger = new MyLogger();
             # BEGIN Setting reCaptcha v3 validation data
+
+            if(empty($_POST['g-recaptcha-response'])){
+                return back()->with('error_kontakt', 'reCAPTCHA Übertragung fehlgeschlagen.');
+            }
+            $secretKey = "";
             $url = "https://www.google.com/recaptcha/api/siteverify";
             $data = [
-                'secret' => env("RECAPTCHA_SECRET_KEY"),
+                'secret' => $secretKey,
                 'response' => $_POST['g-recaptcha-response'],
                 'remoteip' => $_SERVER['REMOTE_ADDR']
             ];
+
+
+            $Logger->log( "Geheim".$secretKey."\n"."ServerID: ".$_SERVER['REMOTE_ADDR']);
+
 
             $options = array(
                 'http' => array(
@@ -513,6 +522,8 @@ class MainController extends BaseController
             }
 
             if ($res['success'] && $res['score'] >= 0.5) {
+
+                $Logger->log($res);
 
                 try {
 

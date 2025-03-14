@@ -26,53 +26,21 @@
             <textarea name="text" required placeholder="Ihre Nachricht an uns!"></textarea>
 
             <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-            <button  class="buttonLogin" type="submit" id="submitBtn">Abschicken</button>
+            <button class="buttonLogin" type="button" onclick="executeReCaptchaKontakt()">Absenden</button>
+
         </form>
+        <script src="https://www.google.com/recaptcha/api.js?render=6Ldz2vQqAAAAAMAYAJ9W4msLDowqxzh9qkWS0gv7"></script>
 
-        <script src="https://www.google.com/recaptcha/api.js?render=6LeK2PQqAAAAAKQCwnwgJMArhA4Is3FHGd9vXx8s"></script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Überprüfung, ob das Formular existiert, bevor der Event-Listener gesetzt wird
-                let kontaktForm = document.getElementById('formKontakt');
-                let newsForm = document.getElementById('formNews');
-
-                if (kontaktForm) {
-                    kontaktForm.addEventListener('submit', function (event) {
-                        handleReCaptcha(event, 'formKontakt', 'g-recaptcha-response');
-                    });
-                }
-
-                if (newsForm) {
-                    newsForm.addEventListener('submit', function (event) {
-                        handleReCaptcha(event, 'formNews', 'g-recaptcha-newsletter');
-                    });
-                }
-            });
-
-            function handleReCaptcha(event, formId, tokenFieldId) {
-                event.preventDefault(); // Verhindert das direkte Absenden
-
+            function executeReCaptchaKontakt() {
                 grecaptcha.ready(function () {
-                    grecaptcha.execute('6LeK2PQqAAAAAKQCwnwgJMArhA4Is3FHGd9vXx8s', { action: 'submit' })
-                        .then(function (token) {
-                            let tokenField = document.getElementById(tokenFieldId);
-                            if (tokenField) {
-                                tokenField.value = token;
-                            }
-
-                            let form = document.getElementById(formId);
-                            if (form) {
-                                form.submit();
-                            }
-                        })
-                        .catch(function (error) {
-                            alert('reCAPTCHA Fehler: ' + error);
-                        });
+                    grecaptcha.execute('6Ldz2vQqAAAAAMAYAJ9W4msLDowqxzh9qkWS0gv7', { action: 'submit' }).then(function (token) {
+                        document.getElementById('g-recaptcha-response').value = token;
+                        document.getElementById("formKontakt").submit();
+                    });
                 });
             }
         </script>
-
-
 
     </div>
     @if(\Illuminate\Support\Facades\Session::has('error_kontakt'))
@@ -108,11 +76,24 @@
                 <input type="checkbox" name="datenschutz" value="akzeptiert" required>
                 <span>Ich habe die <a href="/Datenschutz" target="_blank">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</span>
             </label>
-            <input type="hidden" id="g-recaptcha-newsletter" name="g-recaptcha-response">
             <input type="hidden" name="form_name" value="form">
 
-            <button  class="buttonLogin" type="submit" id="submitBtn">Abschicken</button>
+            <input type="hidden" id="g-recaptcha-response_news" name="g-recaptcha-response">
+            <button class="buttonLogin" type="button" onclick="executeReCaptchaNews()">Absenden</button>
+
         </form>
+        <script src="https://www.google.com/recaptcha/api.js?render=6Ldz2vQqAAAAAMAYAJ9W4msLDowqxzh9qkWS0gv7"></script>
+
+        <script>
+            function executeReCaptchaNews() {
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('6Ldz2vQqAAAAAMAYAJ9W4msLDowqxzh9qkWS0gv7', { action: 'submit' }).then(function (token) {
+                        document.getElementById('g-recaptcha-response_news').value = token;
+                        document.getElementById("formNews").submit();
+                    });
+                });
+            }
+        </script>
     </div>
 
     @if(\Illuminate\Support\Facades\Session::has('error'))
