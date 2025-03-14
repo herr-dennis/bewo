@@ -450,7 +450,6 @@ class MainController extends BaseController
      */
     public function sendKontakt(Request $request)
     {
-
         if ($request->filled('website')) {
             return back()->with('error_kontakt', 'Bot erkannt!');
         }
@@ -492,14 +491,28 @@ class MainController extends BaseController
             # Creates and returns stream context with options supplied in options preset
             $context = stream_context_create($options);
             # file_get_contents() is the preferred way to read the contents of a file into a string
-            $response = file_get_contents($url, false, $context);
+            try {
+                $response = @file_get_contents($url, false, $context);
+                if ($response === false) {
+                    throw new \Exception("Verbindung zu reCAPTCHA fehlgeschlagen. Bitte versuchen Sie es erneut.");
+                }
+            } catch (\Exception $e) {
+                $Logger->log("Verbindung".$e->getMessage());
+            }
+
             # Takes a JSON encoded string and converts it into a PHP variable
             $res = json_decode($response, true);
             # END setting reCaptcha v3 validation data
 
-            $Logger->log($response);
+            if (!is_array($res)) {
+                $Logger->log("Fehler: API-Antwort ist ungültig. Antwort: " . $response);
+            }else{
+                if (!$res["success"]) {
+                    $Logger->log("Fehler: " . json_encode($res["error-codes"]));
+                }
+            }
 
-            if ($res['success'] == true && $res['score'] >= 0.5) {
+            if ($res['success'] && $res['score'] >= 0.5) {
 
                 try {
 

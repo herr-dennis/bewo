@@ -29,7 +29,7 @@
             <button  class="buttonLogin" type="submit" id="submitBtn">Abschicken</button>
         </form>
 
-        <script src="https://www.google.com/recaptcha/api.js?render=6Lf5kegqAAAAAGWWhy3nUItN7TR7kBEpmb7XPcf9"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LeK2PQqAAAAAKQCwnwgJMArhA4Is3FHGd9vXx8s"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Überprüfung, ob das Formular existiert, bevor der Event-Listener gesetzt wird
@@ -53,7 +53,7 @@
                 event.preventDefault(); // Verhindert das direkte Absenden
 
                 grecaptcha.ready(function () {
-                    grecaptcha.execute('6Lf5kegqAAAAAGWWhy3nUItN7TR7kBEpmb7XPcf9', { action: 'submit' })
+                    grecaptcha.execute('6LeK2PQqAAAAAKQCwnwgJMArhA4Is3FHGd9vXx8s', { action: 'submit' })
                         .then(function (token) {
                             let tokenField = document.getElementById(tokenFieldId);
                             if (tokenField) {
