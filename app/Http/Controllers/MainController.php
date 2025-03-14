@@ -286,14 +286,19 @@ class MainController extends BaseController
                 } catch (\Exception $exception) {
                     Session::flash("error_2", $exception->getMessage());
                 }
+                if($request->input("sendEmail")=="akzeptiert"){
 
-                $send = new SendingEmails();
+                    $send = new SendingEmails();
 
-                if ($send->send($datum, $text)) {
-                    Session::flash("msg_email", "Die E-Mails wurden erfolgreich gesendet.");
-                } else {
-                    Session::flash("error_email", "Fehler beim Senden der E-Mails. Bitte überprüfen Sie die Logs.");
+                    if ($send->send($datum, $text)) {
+                        Session::flash("msg_email", "Die E-Mails wurden erfolgreich gesendet.");
+                    } else {
+                        Session::flash("error_email", "Fehler beim Senden der E-Mails. Bitte überprüfen Sie die Logs.");
+                    }
+
                 }
+
+
 
 
             }
@@ -503,9 +508,9 @@ class MainController extends BaseController
                         'email' => $email,
                         'text' => $text
                     ], function ($message) use ($email) {
-                        $message->to('herr.dennisblacky@hotmail.de')
+                        $message->to('info@bewo-paiva.de')
                             ->subject('Neue Kontaktformular-Anfrage')
-                            ->from($email)
+                            ->from("info@bewo-paiva.de", "BeWo Paiva")
                             ->replyTo($email);
                     });
 

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@php use Carbon\Carbon; @endphp
+    <!DOCTYPE html>
 <html>
 <head>
     <style>
@@ -34,7 +35,7 @@
             color: #777;
         }
 
-        .date{
+        .date {
             font-size: 20px;
             color: #5c2d91;
         }
@@ -49,9 +50,9 @@
     <div class="content">
         <p>Hallo{{" ".$name}},</p>
         <p>Eine neue Veranstaltung wurden von Bewo-Paiva geplant!:</p>
-         <p class="date" >Wann:" "{{ \Carbon\Carbon::parse($datum)->format('d.m.Y ') }}</p>
-        <p><strong>Nachricht:</strong> {{ $text }}</p>
-        <p>Ihre Zustimmung des Newsletters am: {{ \Carbon\Carbon::parse($consent_given_at)->format('d.m.Y H:i') }}</p>
+        <p class="date">Wann:{{ " ".Carbon::parse($datum)->format('d.m.Y ') }}</p>
+        <p><strong>Nachricht:</strong> {!! $text !!}</p>
+        <p>Ihre Zustimmung des Newsletters am: {{ Carbon::parse($consent_given_at)->format('d.m.Y H:i') }}</p>
     </div>
 
     <div class="footer">
