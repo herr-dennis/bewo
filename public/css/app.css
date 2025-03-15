@@ -226,6 +226,7 @@ footer a:hover {
 @media (max-width: 767px) {
     .aktuellesContainer{
         width: 80%;
+
     }
 
     .imageContainer {
@@ -378,11 +379,8 @@ footer a:hover {
         width: 70%;
     }
     .aktuellesContainer {
-        flex-shrink: 0; /* Verhindert das Strecken */
         width: 50%;
-        height: auto;
-        box-sizing: border-box; /* Box-Modell korrekt einstellen */
-
+        height:50%;
     }
 
 }
@@ -495,8 +493,8 @@ hr.shadow {
 }
 
 .profile-card img {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     margin-bottom: 15px;
 }
@@ -673,13 +671,11 @@ input[type="submit"]:hover {
     margin-top: 20px;
     align-items: center;
 }
-
 .aktuellesContainer img {
-    width: 90%; /* Bildabstand zum Container */
-    margin: 15px auto;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 90%;
+    height: 100%;
+    object-fit: contain; /* GANZES Bild bleibt sichtbar */
+    border-radius: 8px; /* Optional */
 }
 
 .aktuellesContainer h2 {

@@ -12,10 +12,10 @@
 
           <h2>{{$item["veranstaltung"]}}</h2>
           @if($item["bildUrl"])
-              <img src="{{$item["bildUrl"]}}" alt="Aktuelles Bild von Noah">
+              <img src="{{$item["bildUrl"]}}" alt="Logo">
           @endif
           @if(!$item["bildUrl"])
-              <img src="{{asset('MediumSquareLogo.jpg')}}" alt="Aktuelles Bild von Noah">
+              <img src="{{asset('MediumSquareLogo.jpg')}}" alt="Logo">
           @endif
           <p>{!! nl2br(($item["text"])) !!}</p>
       </div>

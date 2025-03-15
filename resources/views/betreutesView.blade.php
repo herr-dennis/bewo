@@ -8,7 +8,7 @@
 
 <h1 class="headline">Betreutes Wohnen</h1>
 <div class="defaultContainer" >
-    <p>Unser Angebot Betreutes Wohnen ist eine Eingliederungshilfe für Menschen mit einer psychischen Behinderung in der Städteregion Aachen.</p>
+    <section>Unser Angebot Betreutes Wohnen ist eine Eingliederungshilfe für Menschen mit einer psychischen Behinderung in der Städteregion Aachen.</section>
 </div>
 
  <div class="defaultUl">

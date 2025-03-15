@@ -38,6 +38,7 @@
     <p>
         Schwarz&Web
     </p>
+    <a  href="mailto::info@schwarz-und-web.de" >info@schwarz-und-web.de</a>
     <h3>Haftungsausschluss (Disclaimer):</h3>
     <h4>Haftung für Inhalte:</h4>
     <p>

@@ -167,7 +167,13 @@
             E-Mail: <a type="email" >info@bewo-paiva.de</a><br>
            </p>
 
-
+        <p>
+            Diese Webseite verwendet reCAPTCHA v3, um Spam und Missbrauch zu verhindern.
+            Bitte beachten Sie, dass Ihre Nutzung von reCAPTCHA v3 den Datenschutzbestimmungen und Nutzungsbedingungen von Google unterliegt.
+        </p>
+        <p>
+            Durch das Absenden dieses Formulars stimmen Sie der Verarbeitung Ihrer Daten durch Google reCAPTCHA v3 gemäß den <a href="https://policies.google.com/privacy" target="_blank">Datenschutzbestimmungen</a> und <a href="https://policies.google.com/terms" target="_blank">Nutzungsbedingungen</a> von Google zu.
+        </p>
     </section>
 
 </div>
