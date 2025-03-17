@@ -376,7 +376,7 @@ class MainController extends BaseController
     public function insertNewsletter(Request $request)
     {
         $Logger = new MyLogger();
-        $secretKey = "";
+        $secretKey = "6LeK2PQqAAAAAOOKhuk07_UKdSkS2gJdDCZrF3_M";
         # reCAPTCHA v3 Validierung
         $url = "https://www.google.com/recaptcha/api/siteverify";
         $data = [
@@ -477,7 +477,7 @@ class MainController extends BaseController
             if(empty($_POST['g-recaptcha-response'])){
                 return back()->with('error_kontakt', 'reCAPTCHA Übertragung fehlgeschlagen.');
             }
-            $secretKey = "";
+            $secretKey = "6LeK2PQqAAAAAOOKhuk07_UKdSkS2gJdDCZrF3_M";
             $url = "https://www.google.com/recaptcha/api/siteverify";
             $data = [
                 'secret' => $secretKey,
