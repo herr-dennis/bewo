@@ -11,6 +11,14 @@
     <meta name="description" content="@yield("beschreibung")">
     <meta name="robots" content="index, follow"> <!-- Suchmaschinen dürfen die Seite indexieren und Links folgen -->
 
+    <meta property="og:title" content="@yield('titelOg')" />
+    <meta property="og:description" content="@yield('beschreibungOg')" />
+    <meta property="og:image" content="{{ asset('MediumSquareLogo.jpg') }}" />
+    <meta property="og:url" content="{{ Request::url() }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ config('app.name') }}" />
+
+
 </head>
 <body>
 <header>
