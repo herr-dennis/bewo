@@ -30,7 +30,8 @@ class SendingEmails
                 return true; // Erfolg
             } catch (\Exception $e) {
                 Log::error("Fehler beim Senden einer E-Mail\n\n" . $e->getMessage());
-
+                $logger = new MyLogger();
+                $logger->log("Fehler beim Senden einer E-Mail\n\n" . $e->getMessage());
                 return false; // Fehler
             }
         }
