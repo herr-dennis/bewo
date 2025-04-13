@@ -226,7 +226,6 @@ footer a:hover {
 @media (max-width: 767px) {
     .aktuellesContainer{
         width: 80%;
-
     }
 
     .imageContainer {
@@ -274,6 +273,11 @@ footer a:hover {
         }
     }
 
+    .gallery{
+        width: 80%;
+        height: 400px;
+    }
+
     .imgHeaderSozio{
         width: 70%;                /* Logo nimmt 70% der Container-Breite ein */
         height: auto;              /* Höhe wird automatisch skaliert */
@@ -297,6 +301,12 @@ footer a:hover {
 
     .defaultContainer{
         width: 60%;
+    }
+
+
+    .gallery{
+        width: 60%;
+        height: 400px;
     }
 
     .imageContainer {
@@ -773,3 +783,51 @@ input[type="submit"]:hover {
         width: 60%;
     }
 }
+.gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 207px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.gallery img:first-child {
+    display: block;
+}
+
+.w3-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(92, 45, 145, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.w3-display-left {
+    left: 10px;
+}
+
+.w3-display-right {
+    right: 10px;
+}
+
+.w3-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+

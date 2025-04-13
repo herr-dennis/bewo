@@ -4,12 +4,43 @@
 @section("main-content")
 
     <div class="zitate" >
-        <h2>Teilhabe am Leben</h2>
+        <h2 style="color: #5c2d91">Teilhabe am Leben</h2 >
         <p>
             Die Hilfe wird so individuell gestaltet, wie das Leben unserer Kunden ist!
         </p>
         <hr>
     </div>
+
+  <p class="defaultContainer">Unser Büro und Praxis! Zum wohlfühlen.</p>
+    <div class="gallery" >
+            <img  class="mySlides" src="{{asset("bur0.jpg")}}" alt="Bild 1">
+            <img class="mySlides"  src="{{asset("bur1.jpg")}}" alt="Bild 2">
+            <img  class="mySlides" src="{{asset("bur2.jpg")}}" alt="Bild 3">
+        <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+    </div>
+
+    <script>
+
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+    showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length} ;
+    for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+    }
+    x[slideIndex-1].style.display = "block";
+    }
+    </script>
+
     <div class="defaultContainer">
         <p>Mit unseren Angeboten bieten wir Menschen mit einer <span class="highlight">Teilhabeeinschränkung</span> Unterstützung, um sie möglichst zu einer „<span class="highlight">unabhängigen Lebensführung und Eingliederung in die Gemeinschaft</span>“ zu befähigen (Artikel 19 der UN-Behindertenrechtskonvention).</p>
 
