@@ -11,7 +11,7 @@
         <hr>
     </div>
 
-  <p class="defaultContainer">Unser Büro und Praxis! Zum wohlfühlen.</p>
+  <p class="defaultContainer">Unser Büro und unsere Praxis — zum Wohlfühlen!</p>
     <div class="gallery" >
             <img  class="mySlides" src="{{asset("bur0.jpg")}}" alt="Bild 1">
             <img class="mySlides"  src="{{asset("bur1.jpg")}}" alt="Bild 2">
