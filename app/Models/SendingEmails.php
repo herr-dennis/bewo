@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendingEmails
@@ -28,7 +29,8 @@ class SendingEmails
                 }
                 return true; // Erfolg
             } catch (\Exception $e) {
-                MyLogger::class->log("Fehler beim Senden einer E-Mail\n\n".$e->getMessage());
+                Log::error("Fehler beim Senden einer E-Mail\n\n" . $e->getMessage());
+
                 return false; // Fehler
             }
         }
