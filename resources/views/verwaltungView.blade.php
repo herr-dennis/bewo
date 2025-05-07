@@ -89,6 +89,12 @@
                 <input type="checkbox" name="sendEmail" value="akzeptiert" >
                 <span> Email senden an alle Newsletter-Abonnenten.</span>
             </label>
+            <label id="checkLaBEL" class="checkbox-container">
+                <input type="checkbox" name="sendEmailRepeat" value="akzeptiert" >
+                <span> Wiederkehrende Veranstaltung?</span>
+            </label>
+
+
 
             <input type="submit" value="Einpflegen">
 

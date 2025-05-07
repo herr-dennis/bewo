@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Admins;
 use App\Models\Dates;
 use App\Models\InkrementAufrufe;
@@ -13,8 +12,6 @@ use App\Models\Termine;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -67,20 +64,6 @@ class MainController extends BaseController
         try {
             // Termine aus der Datenbank holen und direkt sortieren
             $termine = Termine::query()->orderBy('datum')->get();
-
-            // Aktuelles Datum als Carbon-Instanz holen
-            $currentDate = Carbon::now('Europe/Berlin');
-
-            foreach ($termine as $termineDatum) {
-                // Datum des Termins als Carbon-Objekt parsen
-                $termin = Carbon::parse($termineDatum->datum);
-
-                // Falls der Termin vor dem heutigen Datum liegt, löschen
-                if ($termin->lt($currentDate->startOfDay())) {
-                    Termine::query()->where('datum', $termineDatum->datum)->delete();
-                }
-
-            }
 
         } catch (\Exception $e) {
             Session::flash("error", $e->getMessage());
@@ -262,6 +245,8 @@ class MainController extends BaseController
             if ($request->has("veranstaltung") && $request->has("datum")) {
                 $veranstaltung = $request->get("veranstaltung");
                 $datum = $request->get("datum");
+                $wiederkehrend  = $request->get("sendEmailRepeat") ? true : false;
+
                 if ($request->has("text")) {
                     $text = nl2br($request->input('text'), false);
                 } else {
@@ -281,6 +266,7 @@ class MainController extends BaseController
                         'datum' => $datum,
                         'text' => $text,
                         'bildUrl' => $bild,
+                        "wiederkehrend" => $wiederkehrend
                     ]);
                     Session::flash("msg_2", "Aktuelles eingepflegt!.");
                 } catch (\Exception $exception) {
