@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\MyLogger;
 use App\Models\Termine;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
@@ -14,9 +15,13 @@ class UpdateTermine extends Command
 
     public function handle()
     {
+
+        $logger = new MyLogger();
+
+
         $termine = Termine::query()->orderBy('datum')->get();
         $currentDate = Carbon::now('Europe/Berlin');
-
+        $logger->log("Scheudle ".$currentDate);
         foreach ($termine as $termineDatum) {
             $termin = Carbon::parse($termineDatum->datum);
 
