@@ -831,3 +831,11 @@ input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.logoIntro img {
+    width: 100%;
+    max-width: 400px; /* deutlich größer */
+    height: auto;
+    border-radius: 12px; /* schöne, weiche Ecken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* tiefer Schatten */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* optionaler, dezenter Rahmen */
+}

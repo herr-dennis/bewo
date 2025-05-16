@@ -8,11 +8,21 @@
 
 <h1 class="headline">Betreutes Wohnen</h1>
 <div class="defaultContainer" >
-    <section>Unser Angebot Betreutes Wohnen ist eine Eingliederungshilfe für Menschen mit einer psychischen Behinderung in der Städteregion Aachen.</section>
+    <p>Unser Angebot Betreutes Wohnen ist eine Eingliederungshilfe für Menschen mit einer psychischen Behinderung in der Städteregion Aachen.</p>
+
+    <div class="logoIntro">
+        <img src="{{ asset('images/IMG-20250513-WA0021.jpg') }}" alt="Fenster Logo BeWo">
+    </div>
+
+
 </div>
 
  <div class="defaultUl">
      <p class="p_schrift" >Wir entwickeln mit Ihnen gemeinsam einen individuellen Hilfeplan und unterstützen Sie bei: </p>
+
+
+
+
     <ul>
         <li>der Alltagsbewältigung, der Tagesstrukturierung, der Haushaltsführung</li>
         <li>der Suche und dem Erhalt einer eigenen Wohnung</li>

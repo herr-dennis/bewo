@@ -8,7 +8,9 @@
     <h1 class="headline" >Hilfe für junge Erwachsene</h1>
     <div class="defaultContainer">
         <p>Wir bieten umfassende Unterstützung, um Menschen in ihrem Alltag zu begleiten und ihre Selbstständigkeit zu stärken. Im Rahmen der Eingliederungshilfe helfen wir in verschiedenen Lebensbereichen, um eine bestmögliche soziale Teilhabe zu ermöglichen.</p>
-
+        <div class="logoIntro">
+            <img src="{{ asset('images/IMG-20250513-WA0022.jpg') }}" alt="Fenster Logo BeWo">
+        </div>
         <p class="p_schrift" >Unsere Unterstützung umfasst unter anderem:</p>
         <ul>
             <li>Die Alltagsbewältigung, Tagesstrukturierung und Haushaltsführung</li>

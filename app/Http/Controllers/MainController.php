@@ -7,14 +7,15 @@ use App\Models\InkrementAufrufe;
 use App\Models\Mitarbeiter;
 use App\Models\MyLogger;
 use App\Models\Newsletter;
-use App\Models\SendingEmails;
 use App\Models\Termine;
-use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+
+use App\Models\SendingEmails;
 
 class MainController extends BaseController
 {

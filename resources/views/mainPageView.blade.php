@@ -10,7 +10,22 @@
         </p>
         <hr>
     </div>
+    <div class="defaultContainer">
 
+        <div class="logoIntro">
+            <img src="{{ asset('images/IMG-20250513-WA0015.jpg') }}" alt="Fenster Logo BeWo">
+        </div>
+        <p>Mit unseren Angeboten bieten wir Menschen mit einer <span class="highlight">Teilhabeeinschränkung</span> Unterstützung, um sie möglichst zu einer „<span class="highlight">unabhängigen Lebensführung und Eingliederung in die Gemeinschaft</span>“ zu befähigen (Artikel 19 der UN-Behindertenrechtskonvention).</p>
+
+        <p>In der Präambel der Behindertenrechtskonvention ist beschrieben, dass Behinderung aus Wechselwirkung zwischen Menschen mit Beeinträchtigungen sowie einstellungs- und umweltbedingten Barrieren entsteht und verstanden wird.</p>
+
+
+        <p>Wir wollen <span class="highlight">Hilfe zur Selbsthilfe</span> leisten, in dem wir in unserer Arbeit von dem individuellen Bedarf ausgehen und vorhandene Ressourcen und Kompetenzen stärken. Wir unterstützen und fördern die Einbindung in das soziale Umfeld.</p>
+
+
+        <p>Uns ist es ein Anliegen, dass niemand aufgrund der Teilhabeeinschränkung aus der Gesellschaft ausgeschlossen wird. <span class="highlight">Vertrauen, Wertschätzung und Empathie</span> sind Teil der Beziehungsgestaltung und bilden das Fundament unserer täglichen Arbeit. In dieser Haltung bauen wir tragfähige und kontinuierliche Beziehungen
+            auf.</p>
+    </div>
   <p class="defaultContainer">Unser Büro und unsere Praxis — zum Wohlfühlen!</p>
     <div class="gallery" >
             <img  class="mySlides" src="{{asset("bur0.jpg")}}" alt="Bild 1">
@@ -44,17 +59,6 @@
     }
     </script>
 
-    <div class="defaultContainer">
-        <p>Mit unseren Angeboten bieten wir Menschen mit einer <span class="highlight">Teilhabeeinschränkung</span> Unterstützung, um sie möglichst zu einer „<span class="highlight">unabhängigen Lebensführung und Eingliederung in die Gemeinschaft</span>“ zu befähigen (Artikel 19 der UN-Behindertenrechtskonvention).</p>
 
-        <p>In der Präambel der Behindertenrechtskonvention ist beschrieben, dass Behinderung aus Wechselwirkung zwischen Menschen mit Beeinträchtigungen sowie einstellungs- und umweltbedingten Barrieren entsteht und verstanden wird.</p>
-
-
-        <p>Wir wollen <span class="highlight">Hilfe zur Selbsthilfe</span> leisten, in dem wir in unserer Arbeit von dem individuellen Bedarf ausgehen und vorhandene Ressourcen und Kompetenzen stärken. Wir unterstützen und fördern die Einbindung in das soziale Umfeld.</p>
-
-
-        <p>Uns ist es ein Anliegen, dass niemand aufgrund der Teilhabeeinschränkung aus der Gesellschaft ausgeschlossen wird. <span class="highlight">Vertrauen, Wertschätzung und Empathie</span> sind Teil der Beziehungsgestaltung und bilden das Fundament unserer täglichen Arbeit. In dieser Haltung bauen wir tragfähige und kontinuierliche Beziehungen
-            auf.</p>
-    </div>
 
 @endsection

@@ -7,6 +7,9 @@
 
     <div class="defaultContainer" >
 
+        <div class="logoIntro">
+            <img src="{{ asset('images/IMG-20250513-WA0020.jpg') }}" alt="Fenster Logo BeWo">
+        </div>
         <p>Soziotherapie ist die Unterstützung für Menschen mit einer psychischen Erkrankung nach
             § 37a SGB V. Sie ist eine ambulant therapeutische Behandlungs- und Hilfeform, die in Einzel- und Gruppengesprächen stattfindet.</p>
     </div>

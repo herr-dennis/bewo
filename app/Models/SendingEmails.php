@@ -1,40 +1,50 @@
 <?php
-
 namespace App\Models;
 
-use Illuminate\Support\Facades\Log;
+use App\Mail\NewsletterBenachrichtigung;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class SendingEmails
 {
-
-
-    function send($date, $text)
+    public function send($date, $text)
     {
-        {
-            $newsletter = Newsletter::all();
+        $newsletter = Newsletter::all();
+        if ($date === null) {
+            $date = now();
+        }
+
+        $fehlerhafteEmpfaenger = [];
+
+        foreach ($newsletter as $item) {
             try {
-                foreach ($newsletter as $item) {
-                    Mail::send('emails.newsletterEmail', [
-                        'name' => $item["name"],
-                        'datum' => $date,
-                        'text' => $text,
-                        'consent_given_at' => $item["consent_given_at"],
-                    ], function ($message) use ($item) {
-                        $message->to($item["email"])
-                            ->subject('Neuer Newsletter')
-                            ->from("info@bewo-paiva.de", "BeWo Paiva")
-                            ->replyTo($item["email"]);
-                    });
+                if (!filter_var($item["email"], FILTER_VALIDATE_EMAIL)) {
+                    throw new \Exception("Ungültige E-Mail-Adresse: {$item['email']}");
                 }
-                return true; // Erfolg
+
+                Mail::to($item["email"])->send(
+                    new NewsletterBenachrichtigung(
+                        $item["name"],
+                        $item["email"],
+                        $text,
+                        $date,
+                        $item["consent_given_at"] ?: now()
+                    )
+                );
             } catch (\Exception $e) {
-                Log::error("Fehler beim Senden einer E-Mail\n\n" . $e->getMessage());
+                Log::warning("Fehler beim Senden an {$item['email']}: " . $e->getMessage());
                 $logger = new MyLogger();
-                $logger->log("Fehler beim Senden einer E-Mail\n\n" . $e->getMessage());
-                return false; // Fehler
+                $logger->log("Fehler beim Senden an {$item['email']}: " . $e->getMessage());
+                $fehlerhafteEmpfaenger[] = $item['email'];
             }
         }
-    }
 
+        if (count($fehlerhafteEmpfaenger) > 0) {
+            Log::info("Folgende Empfänger konnten nicht erreicht werden: " . implode(', ', $fehlerhafteEmpfaenger));
+            return false;
+        }
+
+        return true;
+    }
 }
+
