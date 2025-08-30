@@ -36,7 +36,7 @@
                 <a href="/Termine">
                     <i class="fa fa-calendar"></i> <!-- Kalender-Symbol -->
                 </a>
-                <span onclick=" moveToKontakt()">Aktuelles</span>
+                <span onclick="  moveToAktuell()">Aktuelles</span>
             </div>
             <div class="infoItem">
                 <a href="/Kontakt">
@@ -50,7 +50,7 @@
               function moveToKontakt(){
                   window.location.href="/Kontakt";
               }
-              function  moveToKontakt(){
+              function  moveToAktuell(){
                   window.location.href="/Termine"
               }
 
