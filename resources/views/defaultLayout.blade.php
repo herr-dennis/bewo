@@ -30,21 +30,41 @@
                 <a href="tel:024054067133">
                     <i class="fa fa-phone"></i> <!-- Telefon-Symbol -->
                 </a>
-                <span>02405 4067133</span>
+                <span onclick="makeCall()" >02405 4067133</span>
             </div>
             <div class="infoItem">
                 <a href="/Termine">
                     <i class="fa fa-calendar"></i> <!-- Kalender-Symbol -->
                 </a>
-                <span>Aktuelles</span>
+                <span onclick=" moveToKontakt()">Aktuelles</span>
             </div>
             <div class="infoItem">
                 <a href="/Kontakt">
                     <i class="fa fa-comment"></i> <!-- Kontakt-Symbol -->
                 </a>
-                <span>Kontakt</span>
+                <span onclick="moveToKontakt()" >Kontakt</span>
             </div>
         </div>
+
+          <script>
+              function moveToKontakt(){
+                  window.location.href="/Kontakt";
+              }
+              function  moveToKontakt(){
+                  window.location.href="/Termine"
+              }
+
+              function makeCall(){
+                  const telLink = document.createElement('a');
+                  telLink.href='tel:024054067133';
+                  telLink.style.display='none';
+                  document.body.appendChild(telLink);
+
+                  telLink.click();
+
+
+              }
+          </script>
 
 
        @if(\Illuminate\Support\Facades\Session::has("error_db"))

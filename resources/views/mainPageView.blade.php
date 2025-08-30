@@ -3,6 +3,14 @@
 @section("titel","BeWo-Paiva | Ambulantes betreutes Wohnen | Würselen")
 @section("main-content")
 
+
+
+    <div class="defaultContainer">
+        Unsere Adresse lautet: <br>
+        Bahnhofstr. 33 <br>
+        52146 Würselen
+    </div>
+
     <div class="zitate" >
         <h2 style="color: #5c2d91">Teilhabe am Leben</h2 >
         <p>
