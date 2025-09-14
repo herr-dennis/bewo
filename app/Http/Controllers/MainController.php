@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\Kontaktformular;
 use App\Models\Admins;
 use App\Models\Dates;
 use App\Models\InkrementAufrufe;
@@ -508,22 +509,16 @@ class MainController extends BaseController
                 }
             }
 
+
             if ($res['success'] && $res['score'] >= 0.5) {
 
                 $Logger->log($res);
 
                 try {
 
-                    Mail::send('emails.email', [
-                        'name' => $name,
-                        'email' => $email,
-                        'text' => $text
-                    ], function ($message) use ($email) {
-                        $message->to('info@bewo-paiva.de')
-                            ->subject('Neue Kontaktformular-Anfrage')
-                            ->from("info@bewo-paiva.de", "BeWo Paiva")
-                            ->replyTo($email);
-                    });
+
+                    Mail::to("info@bewo-paiva.de")
+                        ->send(new Kontaktformular($name, $email, $text));
 
                     Session::flash("msg_kontakt", "Ihre Nachricht wurde erfolgreich gesendet.");
                 } catch (\Exception $e) {

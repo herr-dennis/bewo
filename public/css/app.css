@@ -166,6 +166,7 @@ main {
 
 
 footer {
+
     border-radius: 8px;
     text-align: center; /* Zentrierter Text */
    margin-bottom: 40px;
@@ -389,7 +390,7 @@ footer a:hover {
         width: 70%;
     }
     .aktuellesContainer {
-        width: 50%;
+        width: 20%;
         height:50%;
     }
 
@@ -680,8 +681,21 @@ input[type="submit"]:hover {
     text-align: center;
     margin-top: 20px;
     align-items: center;
+
+
+    /* Startzustand (unsichtbar + leicht nach rechts verschoben) */
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s ease-out;
 }
+/* Endzustand, wenn sichtbar */
+.aktuellesContainer.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 .aktuellesContainer img {
+    border: solid 1px #4a2176;
     width: 90%;
     height: 100%;
     object-fit: contain; /* GANZES Bild bleibt sichtbar */
@@ -689,6 +703,8 @@ input[type="submit"]:hover {
 }
 
 .aktuellesContainer h2 {
+    border: solid 1px #4a2176;
+    border-radius: 10px;
     padding: 15px;
     font-size: 20px;
     background-color: #ffffff;
@@ -697,6 +713,9 @@ input[type="submit"]:hover {
 }
 
 .aktuellesContainer p {
+    border-radius: 10px;
+    max-width: 80%;
+    background: rgb(92, 45, 145,0.6);
     padding: 15px;
     font-size: 18px;
     color: #000000;
@@ -838,4 +857,24 @@ input[type="submit"]:hover {
     border-radius: 12px; /* schöne, weiche Ecken */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* tiefer Schatten */
     border: 1px solid rgba(0, 0, 0, 0.1); /* optionaler, dezenter Rahmen */
+}
+
+/* Container für dein Logo */
+.DevSchwarzWebLogo {
+    display: flex;
+    justify-content: center;   /* Logo zentrieren */
+    align-items: center;
+}
+
+/* Bild anpassen */
+.DevSchwarzWebLogo__img {
+    width: 60%;
+    max-width: 300px;
+    height: auto;
+    opacity: 0.9;         /* wirkt etwas dezenter */
+    transition: opacity 0.3s ease;
+}
+
+.DevSchwarzWebLogo__img:hover {
+    opacity: 1;           /* beim Hover voll sichtbar */
 }

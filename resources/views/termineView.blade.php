@@ -21,4 +21,23 @@
       </div>
 
   @endforeach
+  <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          const containers = document.querySelectorAll(".aktuellesContainer");
+
+          const observer = new IntersectionObserver((entries, observer) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add("show");
+                      observer.unobserve(entry.target); // nur einmal animieren
+                  }
+              });
+          }, { threshold: 0.2 }); // 20% im Viewport sichtbar
+
+          containers.forEach(container => {
+              observer.observe(container);
+          });
+      });
+  </script>
+
 @endsection

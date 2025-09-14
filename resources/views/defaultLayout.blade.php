@@ -179,7 +179,15 @@
 
     <a id="imp" href="/Impressum">Impressum</a>
     <a  id="daten" href="/Datenschutz">Datenschutz</a>
-    <p class="copy" >&copy; 2025 Unternehmen Bewo-Paiva. Entwickelt von Schwarz@Web</p>
+    <p class="copy" >&copy; 2025 Unternehmen Bewo-Paiva. Entwickelt von Schwarz&Web</p>
+    <div class="DevSchwarzWebLogo " >
+        <img onclick="navToSchwarzWeb()" src="{{asset("schwarzweblogo.png")}}" class="DevSchwarzWebLogo__img" alt="">
+    </div>
+    <script>
+        function navToSchwarzWeb(){
+            window.open("https://www.schwarz-und-web.de", "_blank");
+        }
+    </script>
     @section("footer")
     @show
 </footer>
