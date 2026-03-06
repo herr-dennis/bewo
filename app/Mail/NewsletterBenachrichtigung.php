@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mail;
-
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -33,6 +33,9 @@ class NewsletterBenachrichtigung extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            replyTo: [
+                new Address('info@paiva.de', 'Paiva')
+            ],
             subject: 'Newsletter Benachrichtigung',
         );
     }

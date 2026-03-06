@@ -40,6 +40,7 @@
             color: #5c2d91;
         }
     </style>
+    <title>BeWo Paiva Newsletter</title>
 </head>
 <body>
 <div class="email-container">
