@@ -1,3 +1,5 @@
+@import "nav.css";
+
 /* Hintergrundfarbe für den gesamten Body */
 *{
     line-height: 1.2;
@@ -30,103 +32,8 @@ body {
     -webkit-font-smoothing: antialiased;
     }
 
-nav {
-      float: right;
-      text-align: center; /* Zentriert den Inhalt der <ul> */
-      margin-bottom: 15px;
-}
-nav a{
-    text-decoration: none;
-    color:black;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background:  linear-gradient(to bottom, #ffffff, #cdbfbf);
-    font-size: 15px;
-    padding: 5px 5px;
-    margin-top: 8px; /* Fügt Abstand nach oben hinzu */
-    display: inline-block; /* Verhindert, dass sich die <a>-Elemente überlappen */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichte Tiefe */
-}
-nav a:hover{
-    background:  linear-gradient(to bottom, #ffffff, #4a2176);
-}
-nav a:active{
-    background:  linear-gradient(to bottom, #ffffff, #4a2176);
-}
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto; /* Auto-Margin zentriert die <ul> horizontal */
-    display: inline-block; /* Damit das <ul> nur so breit wie sein Inhalt ist */
-    height: 15px;
-}
 
-nav ul li {
-    display: inline; /* Damit die <li>-Elemente nebeneinander angezeigt werden */
-    margin: 0;
-}
-/* Dropdown-Button (angepasst an Nav-Menü) */
-.dropbtn {
-    text-decoration: none;
-    background:  linear-gradient(to bottom, #ffffff, #cdbfbf);
-    font-size: 15px;
-    padding: 5px 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 8px; /* Fügt Abstand nach oben hinzu */
-    border: 1px solid #ccc;
-    transition: background-color 0.3s ease;
-    display: inline-block; /* Gleichmäßige Ausrichtung */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichte Tiefe */
-}
-
-/* Button Hover-Effekt */
-.dropbtn:hover {
-    background:  linear-gradient(to bottom, #ffffff, #4a2176);
-}
-
-.dropbtn:active {
-    background:  linear-gradient(to bottom, #ffffff, #4a2176);
-}
-
-/* Container für Dropdown */
-.dropdown {
-    position: relative;
-    display: inline-block;
-
-}
-
-/* Dropdown-Inhalt */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    min-width: 100px;
-    z-index: 1000;
-
-}
-
-/* Links im Dropdown */
-.dropdown-content a {
-    color: black;
-    text-decoration: none;
-    font-size: 14px;
-    display: block;
-    margin: 0;
-}
-
-/* Hover-Effekt für Dropdown-Links */
-.dropdown-content a:hover {
-    background-color: #c12e2e;
-}
-
-/* Dropdown sichtbar bei Hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 
 /* Container: Optimierung */
 .defaultContainer {
