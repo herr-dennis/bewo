@@ -1,8 +1,12 @@
 @extends('defaultLayout')
 
 
-
 @section("main-content")
+
+
+
+    </div>
+
     <div style="position: fixed; bottom: 0; right: 20%;">
         <button class="buttonLogin" onclick="onClickAbmelden()">Abmelden</button>
     </div>
@@ -66,41 +70,8 @@
 
   <hr>
 
+<div id="app"> </div>
 
-    <h2>Aktuelles einfügen</h2>
-    <div class="formContainer">
-
-        <form action= {{route('insertVerwaltung')}} id="form2" method="POST"  name="form2" enctype="multipart/form-data" >
-            @csrf
-            <label id="datumLabel">Datum</label>
-            <input type="date" name="datum" placeholder="Datum eingeben" required>
-
-            <label id="veranstaltungLabel">Veranstaltung</label>
-            <input type="text" name="veranstaltung" placeholder="Veranstaltung eingeben" required>
-
-            <label id="bildLabel">Bild einfügen</label>
-            <input type="file" name="bild">
-
-            <input type="hidden" name="form_name_2" value="form2">
-
-            <label id="textLabel">Text:</label>
-            <textarea name="text" placeholder="Beschreibung hinzufügen"></textarea>
-            <label id="checkLabel" class="checkbox-container">
-                <input type="checkbox" name="sendEmail" value="akzeptiert" >
-                <span> Email senden an alle Newsletter-Abonnenten.</span>
-            </label>
-            <label id="checkLaBEL" class="checkbox-container">
-                <input type="checkbox" name="sendEmailRepeat" value="akzeptiert" >
-                <span> Wiederkehrende Veranstaltung?</span>
-            </label>
-
-
-
-            <input type="submit" value="Einpflegen">
-
-
-        </form>
-    </div>
     @if(\Illuminate\Support\Facades\Session::has('error_2'))
         <label class="errorMsg" >{{\Illuminate\Support\Facades\Session::get("error_2")}}</label>
     @endif

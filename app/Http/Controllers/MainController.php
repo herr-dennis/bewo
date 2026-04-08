@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\SendingEmails;
 
-class MainController extends BaseController
+class MainController extends Controller
 {
     public function getHome()
     {
@@ -126,7 +126,7 @@ class MainController extends BaseController
             $password_input = $request->input('password');
 
             // Suche nach Benutzer in der Datenbank
-            $admin = Admins::where('user_name', $name_input)->first();
+            $admin = Admins::query()->where('user_name', $name_input)->first();
 
             if ($admin) {
                 $pw_input_to_hash = hash('sha256', $password_input . $admin->salt);
@@ -597,6 +597,14 @@ class MainController extends BaseController
         return redirect()->back()->with('msg', 'Log-Datei wurde erfolgreich geleert.');
     }
 
+
+
+    public function apiCallNewsletterPost()
+    {
+
+
+
+    }
 
 
 

@@ -22,7 +22,7 @@ class SendingEmails
                     throw new \Exception("Ungültige E-Mail-Adresse: {$item['email']}");
                 }
 
-                Mail::to($item["email"])->send(
+                Mail::to($item["email"])->queue(
                     new NewsletterBenachrichtigung(
                         $item["name"],
                         $item["email"],
@@ -38,7 +38,6 @@ class SendingEmails
                 $fehlerhafteEmpfaenger[] = $item['email'];
             }
         }
-
         if (count($fehlerhafteEmpfaenger) > 0) {
             Log::info("Folgende Empfänger konnten nicht erreicht werden: " . implode(', ', $fehlerhafteEmpfaenger));
             return false;

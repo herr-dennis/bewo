@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    @vite(['resources/js/app.js'])
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titel')</title>
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="description" content="@yield("beschreibung")">
     <meta name="robots" content="index, follow"> <!-- Suchmaschinen dürfen die Seite indexieren und Links folgen -->
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:title" content="@yield('titelOg')" />
     <meta property="og:description" content="@yield('beschreibungOg')" />
     <meta property="og:image" content="{{ asset('MediumSquareLogo.jpg') }}" />
@@ -180,6 +181,7 @@
     <a id="imp" href="/Impressum">Impressum</a>
     <a  id="daten" href="/Datenschutz">Datenschutz</a>
     <p class="copy" >&copy; 2025 Unternehmen Bewo-Paiva. Entwickelt von Schwarz&Web</p>
+    <a href="/Admin" >Login</a>
     <div class="DevSchwarzWebLogo " >
         <img onclick="navToSchwarzWeb()" src="{{asset("schwarzweblogo.png")}}" class="DevSchwarzWebLogo__img" alt="">
     </div>

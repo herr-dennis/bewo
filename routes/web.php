@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Spatie\Sitemap\Sitemap;
-use Spatie\Sitemap\Tags\Url;
+
 
 Route::get('/', function () {
     return app()->make('\App\Http\Controllers\MainController')->getHome();
@@ -98,3 +98,6 @@ Route::get('Logs', function () {
 Route::get('LogLöschen', function () {
     return app()->make('\App\Http\Controllers\MainController')->logLöschen();
 })->name('LogLöschen');
+
+
+Route::post('/api/newsletter', [NewsletterController::class, 'store']);

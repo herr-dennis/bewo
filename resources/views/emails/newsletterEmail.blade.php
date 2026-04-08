@@ -47,7 +47,7 @@
     <div class="logo">
         <img src="{{ asset('MediumSquareLogo.jpg') }}" alt="Schwarz&Web" width="120">
     </div>
-
+     <h1>BeWo Paiva</h1>
     <div class="content">
         <p>Hallo{{" ".$name}},</p>
         <p>Eine neue Veranstaltung wurden von Bewo-Paiva geplant!:</p>
